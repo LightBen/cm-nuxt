@@ -1,0 +1,30 @@
+{
+  "name": "constantine-minhagim",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/firebase": "^7.5.0",
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.8.3",
+    "firebase": "^7.21.1",
+    "flamelink": "^1.0.0-alpha.34",
+    "nuxt": "^2.14.12",
+    "nuxt-i18n": "^6.20.2",
+    "vue-meta": "^2.4.0",
+    "vueisotope": "^3.1.2"
+  },
+  "devDependencies": {
+    "@nuxtjs/style-resources": "^1.0.0",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.1",
+    "sass-resources-loader": "^2.1.1"
+  }
+}
