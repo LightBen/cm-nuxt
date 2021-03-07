@@ -6,12 +6,16 @@ export default {
   head: {
     title: 'Constantine Minhagim',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
+      }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]
   },
 
@@ -24,7 +28,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    { src: '~/plugins/main.js', mode: 'client' }
+    {src: '~/plugins/main.js', mode: 'client'},
+    '@/plugins/flamelink'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -32,37 +37,54 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-      '@nuxtjs/dotenv'
+    '@nuxtjs/dotenv'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: 
-  [
-    'nuxt-i18n',
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
-    '@nuxtjs/style-resources',
+  modules:
     [
-      '@nuxtjs/firebase',
-      {
-        config: {
-          apiKey: process.env.NUXT_ENV_FLAMELINK_API_KEY,
-          authDomain: process.env.NUXT_ENV_FLAMELINK_AUTH_DOMAIN,
-          databaseURL: process.env.NUXT_ENV_FLAMELINK_DB_URL,
-          projectId: process.env.NUXT_ENV_FLAMELINK_PROJECT_ID,
-          storageBucket: process.env.NUXT_ENV_FLAMELINK_STORAGE_BUCKET,
-          messagingSenderId: process.env.NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID,
-          appId: process.env.NUXT_ENV_FLAMELINK_APP_ID,
-          measurementId: process.env.NUXT_ENV_FLAMELINK_MEASUREMENT_ID
-        },
-        services: {
-          auth: true // Just as example. Can be any other service.
+      'nuxt-i18n',
+      // https://go.nuxtjs.dev/axios
+      '@nuxtjs/axios',
+      // https://go.nuxtjs.dev/pwa
+      '@nuxtjs/pwa',
+      '@nuxtjs/style-resources',
+      [
+        '@nuxtjs/firebase',
+        {
+          config: {
+            apiKey: process.env.NUXT_ENV_FLAMELINK_API_KEY,
+            authDomain: process.env.NUXT_ENV_FLAMELINK_AUTH_DOMAIN,
+            databaseURL: process.env.NUXT_ENV_FLAMELINK_DB_URL,
+            projectId: process.env.NUXT_ENV_FLAMELINK_PROJECT_ID,
+            storageBucket: process.env.NUXT_ENV_FLAMELINK_STORAGE_BUCKET,
+            messagingSenderId: process.env.NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID,
+            appId: process.env.NUXT_ENV_FLAMELINK_APP_ID,
+            measurementId: process.env.NUXT_ENV_FLAMELINK_MEASUREMENT_ID
+          },
+          services: {
+            auth: true // Just as example. Can be any other service.
+          }
         }
-      }
-    ]
-  ],
+      ],
+      [
+        '@nuxtjs/firebase',
+        {
+          config: {
+            apiKey: 'NUXT_ENV_FLAMELINK_API_KEY',
+            authDomain: 'NUXT_ENV_FLAMELINK_AUTH_DOMAIN',
+            projectId: 'NUXT_ENV_FLAMELINK_PROJECT_ID',
+            storageBucket: 'NUXT_ENV_FLAMELINK_STORAGE_BUCKET',
+            messagingSenderId: 'NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID',
+            appId: 'NUXT_ENV_FLAMELINK_APP_ID',
+            measurementId: 'NUXT_ENV_FLAMELINK_MEASUREMENT_ID'
+          },
+          services: {
+            // auth: true // Just as example. Can be any other service.
+          }
+        }
+      ]
+    ],
 
   styleResources: {
     scss: ['~/assets/scss/*.scss']
