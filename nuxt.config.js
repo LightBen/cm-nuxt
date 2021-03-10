@@ -67,23 +67,6 @@ export default {
           }
         }
       ],
-      [
-        '@nuxtjs/firebase',
-        {
-          config: {
-            apiKey: 'NUXT_ENV_FLAMELINK_API_KEY',
-            authDomain: 'NUXT_ENV_FLAMELINK_AUTH_DOMAIN',
-            projectId: 'NUXT_ENV_FLAMELINK_PROJECT_ID',
-            storageBucket: 'NUXT_ENV_FLAMELINK_STORAGE_BUCKET',
-            messagingSenderId: 'NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID',
-            appId: 'NUXT_ENV_FLAMELINK_APP_ID',
-            measurementId: 'NUXT_ENV_FLAMELINK_MEASUREMENT_ID'
-          },
-          services: {
-            // auth: true // Just as example. Can be any other service.
-          }
-        }
-      ]
     ],
 
   styleResources: {
