@@ -31,6 +31,13 @@ export default {
       title: this.pageTitle,
     }
   },
+  data() {
+    return {
+      pageTitle: this.pageTitle,
+      pageContent: this.pageContent,
+      loading: true
+    }
+  },
   props: {
     pageId: {
       type: String
@@ -41,9 +48,15 @@ export default {
       const pageContent = app.flamelink.content.get({
         schemaKey: 'pages',
         entryId: this.$route.meta.entryId,
+        // entryId: 'EJPLGthI0WMQ0tlrqPsA', // example: about page entry ID
         // populate: true
       })
-      return { pageTitle: pageContent.title, pageContent: pageContent.content, dataEntryId: this.$route.meta.entryId, loading: false }
+      return {
+        pageTitle: pageContent.title,
+        pageContent: pageContent.content,
+        dataEntryId: this.$route.meta.entryId,
+        loading: false,
+      }
     } catch(error) {
       console.error('Something went wrong while retrieving the entry. Details:', error);
       return { loading: false, error: true }
