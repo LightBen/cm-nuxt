@@ -8,14 +8,14 @@
           </svg>
         </div>
         <h1>
-                <span id="siteTitle1Home">
-                    <span class="lang-fr">Constantine</span>
-                    <span class="lang-he">קונסטנטין</span>
-                </span>
+          <span id="siteTitle1Home">
+            <span class="lang-fr">Constantine</span>
+            <span class="lang-he">קונסטנטין</span>
+          </span>
           <span id="siteTitle2Home">
-                    <span class="lang-fr">Minhagim</span>
-                    <span class="lang-he">מנהגים</span>
-                </span>
+            <span class="lang-fr">Minhagim</span>
+            <span class="lang-he">מנהגים</span>
+          </span>
         </h1>
         <div id="site-description">
           <span class="lang-fr">Minhagim constantinois <br>et d'Afrique du Nord</span>
@@ -90,44 +90,24 @@ export default {
       ]
     }
   },
-  // methods: {
-  //     getContent() {
-  //         this.$flamelinkApp.content.get({
-  //             schemaKey: 'general',
-  //         })
-  //         .then(data => {
-  //             // console.log('data: ', data);;
-  //             this.pageTitle = data['56Mopx0dRrhGql4KrFQX'].title;
-  //             // this.siteTitle1 = data['hWHhdCrUx34iDIsPZokP'].title;
-  //             // this.siteTitle2 = data['crXGbshLALxsrrmX0APz'].title;
-  //         })
-  //         .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
-  //     }
-  // },
   async asyncData({app}) {
     try {
-      const general = await app.flamelink.content.get({
+      const general = app.flamelink.content.get({
         schemaKey: 'general',
         // populate: true
       })
-      console.log({general})
-      return {general}
-    } catch (err) {
-      console.log(err)
-      return {general: []}
-    }
-  },
-  data() {
-    return {
-      // siteTitle1: '',
-      // siteTitle2: '',
-      pageTitle: '',
+      return {
+        pageTitle: general.title,
+        siteTitle1: general['hWHhdCrUx34iDIsPZokP'].title,
+        siteTitle2: general['crXGbshLALxsrrmX0APz'].title,
+        loading: false,
+      }
+    } catch (error) {
+      console.error('Something went wrong while retrieving the entry. Details:', error);
+      return { loading: false, error: true }
     }
   },
   components: {},
-  created() {
-    // this.getContent();
-  },
   mounted() {
     this.$root.$on('langChanged', this.getContent);
     document.body.classList.add('is-homepage');

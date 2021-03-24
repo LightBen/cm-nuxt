@@ -3,7 +3,7 @@
         <div class="mdc-top-app-bar mdc-top-app-bar--fixed" id="headerMain">
             <div class="mdc-top-app-bar__row d-flex">
                 <section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start" id="header-logo">
-                    <div class="logo-icon-container" aria-label="Constantine Minhagim" @click="$router.push({ name: 'Home' })">
+                    <div class="logo-icon-container" aria-label="Constantine Minhagim" @click="$router.push({ path: '/' })">
                         <svg class="icon-perso">
                             <use xlink:href="#icon-logo-cm" href="#icon-logo-cm" />
                         </svg>
@@ -52,7 +52,7 @@
             <!-- <ModalLang /> -->
             <aside class="mdc-drawer mdc-drawer--modal" id="mainNav">
                 <div id="menu-top-bar">
-                    <div id="menu-home" class="menu-top-icon drawer-toggle" @click="$router.push({ name: 'Home' })">
+                    <div id="menu-home" class="menu-top-icon drawer-toggle" @click="$router.push({ path: '/' })">
                         <svg class="icon-perso">
                             <use xlink:href="#icon-logo-cm" href="#icon-logo-cm" />
                         </svg>
@@ -133,7 +133,7 @@
                             <span class="mdc-list-item__text lang-fr">Drive</span>
                             <span class="mdc-list-item__text lang-he">דרייב</span>
                         </a>
-                        <router-link class="nav-grid-item drawer-toggle menu-siddour nav-grid-item-disabled" :to="{ name: 'Home' }">
+                        <router-link class="nav-grid-item drawer-toggle menu-siddour nav-grid-item-disabled" :to="{ path: '/' }">
                             <svg>
                                 <use xlink:href="#icon-book" href="#icon-book" />
                             </svg>
