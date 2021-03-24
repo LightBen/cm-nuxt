@@ -31,40 +31,73 @@ export default {
       title: this.pageTitle,
     }
   },
-  data() {
-    return {
-      dataEntryId: '',
-      pageTitle: '',
-      pageContent: '',
-      loading: true
-    }
-  },
   props: {
     pageId: {
       type: String
     }
   },
-  mounted() {
-    this.dataEntryId = this.entryId;
-    if (!this.dataEntryId) {
-      this.dataEntryId = this.$route.meta.entryId
+  async asyncData({app}) {
+    try {
+      const pageContent = app.flamelink.content.get({
+        schemaKey: 'pages',
+        entryId: this.$route.meta.entryId,
+        // populate: true
+      })
+      return { pageTitle: pageContent.title, pageContent: pageContent.content, dataEntryId: this.$route.meta.entryId, loading: false }
+    } catch(error) {
+      console.error('Something went wrong while retrieving the entry. Details:', error);
+      return { loading: false, error: true }
     }
   },
-  async asyncData({app}) {
-    const pages = await app.flamelink.content.get({
-      schemaKey: 'pages',
-      entryId: this.dataEntryId,
-      // populate: true
-    })
-      .then(pageContent => {
-        console.log(pageContent);
-        this.pageTitle = pageContent.title;
-        this.pageContent = pageContent.content;
-        this.loading = false;
-      })
-      .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
-    console.log(pages);
-    return {pages}
-  },
-};
+}
+
+// export default {
+//   name: 'PageMix',
+//   components: {
+//     Loading
+//   },
+//   metaInfo() {
+//     return {
+//       title: this.pageTitle,
+//     }
+//   },
+//   data() {
+//     return {
+//       dataEntryId: '',
+//       pageTitle: '',
+//       pageContent: '',
+//       loading: true
+//     }
+//   },
+//   props: {
+//     pageId: {
+//       type: String
+//     }
+//   },
+//   mounted() {
+//     this.dataEntryId = this.entryId;
+//     if (!this.dataEntryId) {
+//       this.dataEntryId = this.$route.meta.entryId
+//     }
+//   },
+//   async asyncData({app}) {
+//     try {
+//       const pages = await app.flamelink.content.get({
+//         schemaKey: 'pages',
+//         entryId: this.dataEntryId,
+//         // populate: true
+//       })
+//         .then(pageContent => {
+//           this.pageTitle = pageContent.title;
+//           this.pageContent = pageContent.content;
+//           this.loading = false;
+//         })
+//         .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+//       return {pages}
+//     } catch (err) {
+//       console.log(err)
+//       return {pages: []}
+//     }
+//   },
+// };
 </script>
