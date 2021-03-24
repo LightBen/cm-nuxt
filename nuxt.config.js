@@ -116,39 +116,39 @@ export default {
           component: resolve(__dirname, 'components/PageHalakha.vue'),
           props: true
         },
-        // {
-        //   path: "/hazanout",
-        //   name: "Hazanout",
-        //   component: resolve(__dirname, 'pages/category/Hazanout.vue'),
-        // },
-        // {
-        //   path: '/hazanout/:hazanout_url',
-        //   name: 'hazanout-url',
-        //   component: resolve(__dirname, 'components/PageHazanout.vue'),
-        //   props: true
-        // },
-        // {
-        //   path: "/cuisine",
-        //   name: "Cuisine",
-        //   component: resolve(__dirname, 'pages/category/Cuisine.vue'),
-        // },
-        // {
-        //   path: '/cuisine/:cuisine_url',
-        //   name: 'cuisine-url',
-        //   component: resolve(__dirname, 'components/PageCuisine.vue'),
-        //   props: true
-        // },
-        // {
-        //   path: "/articles",
-        //   name: "Articles",
-        //   component: resolve(__dirname, 'pages/category/Articles.vue'),
-        // },
-        // {
-        //   path: '/articles/:articles_url',
-        //   name: 'articles-url',
-        //   component: resolve(__dirname, 'components/PageArticles.vue'),
-        //   props: true
-        // },
+        {
+          path: "/hazanout",
+          name: "Hazanout",
+          component: resolve(__dirname, 'pages/category/Hazanout.vue'),
+        },
+        {
+          path: '/hazanout/:hazanout_url',
+          name: 'hazanout-url',
+          component: resolve(__dirname, 'components/PageHazanout.vue'),
+          props: true
+        },
+        {
+          path: "/cuisine",
+          name: "Cuisine",
+          component: resolve(__dirname, 'pages/category/Cuisine.vue'),
+        },
+        {
+          path: '/cuisine/:cuisine_url',
+          name: 'cuisine-url',
+          component: resolve(__dirname, 'components/PageCuisine.vue'),
+          props: true
+        },
+        {
+          path: "/articles",
+          name: "Articles",
+          component: resolve(__dirname, 'pages/category/Articles.vue'),
+        },
+        {
+          path: '/articles/:articles_url',
+          name: 'articles-url',
+          component: resolve(__dirname, 'components/PageArticles.vue'),
+          props: true
+        },
         {
           path: "/siddour",
           name: "Siddour",

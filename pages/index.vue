@@ -29,27 +29,27 @@
             <span class="home-section-title lang-fr">Halakha</span>
             <span class="home-section-title lang-he">הלכה</span>
           </NuxtLink>
-          <router-link :to="{ name: 'Hazanout' }" class="hazanout">
+          <NuxtLink :to="{ name: 'Hazanout' }" class="hazanout">
             <svg class="icon-home-section">
               <use href="#icon-music-1"/>
             </svg>
             <span class="home-section-title lang-fr">'Hazanout</span>
             <span class="home-section-title lang-he">חזנות</span>
-          </router-link>
-          <router-link :to="{ name: 'Cuisine' }" class="cuisine">
+          </NuxtLink>
+          <NuxtLink :to="{ name: 'Cuisine' }" class="cuisine">
             <svg class="icon-home-section">
               <use href="#icon-food-tray"/>
             </svg>
             <span class="home-section-title lang-fr">Cuisine</span>
             <span class="home-section-title lang-he">מתכונים</span>
-          </router-link>
-          <router-link :to="{ name: 'Articles' }" class="articles">
+          </NuxtLink>
+          <NuxtLink :to="{ name: 'Articles' }" class="articles">
             <svg class="icon-home-section">
               <use href="#icon-document"/>
             </svg>
             <span class="home-section-title lang-fr">Articles</span>
             <span class="home-section-title lang-he">מאמרים</span>
-          </router-link>
+          </NuxtLink>
           <a href="https://drive.google.com/drive/folders/0BzlEWQTUwxa6YnRYYkJFU0NWalE?usp=sharing" target="_blank"
              class="drive" rel="noopener">
             <svg class="icon-home-section">
@@ -63,13 +63,13 @@
                         </svg>
                     </span>
           </a>
-          <router-link :to="{ name: 'Home' }" class="siddour section-disabled">
+          <NuxtLink :to="{ name: 'Home' }" class="siddour section-disabled">
             <svg class="icon-home-section">
               <use href="#icon-book-fill"/>
             </svg>
             <span class="home-section-title lang-fr">Bientôt...</span>
             <span class="home-section-title lang-he">בקרוב</span>
-          </router-link>
+          </NuxtLink>
         </div>
       </div>
     </section>
