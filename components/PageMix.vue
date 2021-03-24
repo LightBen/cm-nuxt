@@ -44,26 +44,31 @@ export default {
         }
     },
     mounted() {
-        this.dataEntryId = this.entryId;
-        if (!this.dataEntryId) {
-            this.dataEntryId = this.$route.meta.entryId
-        }
-        this.getContent();
-        this.$root.$on('langChanged', this.getContent);
+        // this.dataEntryId = this.entryId;
+        // if (!this.dataEntryId) {
+        //     this.dataEntryId = this.$route.meta.entryId
+        // }
+        // this.getContent();
+        // this.$root.$on('langChanged', this.getContent);
     },
-    methods: {
-        getContent() {
-            this.$flamelinkApp.content.get({
-                schemaKey: 'pages',
-                entryId: this.dataEntryId
-            })
-            .then(pageContent => {
-                this.pageTitle = pageContent.title;
-                this.pageContent = pageContent.content;
-                this.loading = false;
-            })
-            .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
-        }
+  async asyncData({app}) {
+    try {
+      const pages = await app.flamelink.content.get({
+        schemaKey: 'pages',
+        entryId: this.dataEntryId,
+        // populate: true
+      })
+        .then(pageContent => {
+          this.pageTitle = pageContent.title;
+          this.pageContent = pageContent.content;
+          this.loading = false;
+        })
+        .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+      return {pages}
+    } catch (err) {
+      console.log(err)
+      return {pages: []}
     }
+  }
 };
 </script>
