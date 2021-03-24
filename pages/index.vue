@@ -98,8 +98,9 @@ export default {
       })
       return {
         pageTitle: general.title,
-        siteTitle1: general['hWHhdCrUx34iDIsPZokP'].title,
-        siteTitle2: general['crXGbshLALxsrrmX0APz'].title,
+        // pageTitle = data['56Mopx0dRrhGql4KrFQX'].title,
+        // siteTitle1: data['hWHhdCrUx34iDIsPZokP'].title,
+        // siteTitle2: data['crXGbshLALxsrrmX0APz'].title,
         loading: false,
       }
     } catch (error) {
