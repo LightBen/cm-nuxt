@@ -82,7 +82,12 @@ export default {
   pwa: {
     manifest: {
       name: 'Constantine Minhagim',
-      background_color: '#1294f6',
+      display: 'standalone',
+      themeColor: '#1294f6',
+      msTileColor: '#1294f6',
+      appleMobileWebAppCapable: 'yes',
+      appleMobileWebAppStatusBarStyle: 'black',
+      workboxPluginMode: 'InjectManifest',
     },
     // workbox: {
     //   importScripts: [
