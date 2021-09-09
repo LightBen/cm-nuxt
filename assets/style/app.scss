@@ -63,6 +63,14 @@ input {
 
 .container { padding: 0 var(--spacing); }
 
+.illustration {
+  display: block;
+  width: 100%;
+  max-width: 100px;
+  max-height: 300px;
+  margin: 0 auto var(--spacing);
+}
+
 .page-illustration {
   margin: 0 auto var(--spacing);
   text-align: center;
