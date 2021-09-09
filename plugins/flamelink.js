@@ -39,6 +39,56 @@ export default ({app}) => {
 }
 /* END NEW VERSION */
 
+/* meant to be better but doesn't work */
+// export default ({app}) => {
+//   let firebaseApp
+//   if (process.server) {
+//     const admin = require('firebase-admin')
+//
+//     if (!admin.apps.length) {
+//       try {
+//         const serviceAccount = require(process.env.FLAMELINK_PATH_TO_SERVICE_ACCOUNT)
+//
+//         firebaseApp = admin.initializeApp({
+//           credential: admin.credential.cert(serviceAccount),
+//           databaseURL: process.env.FLAMELINK_DB_URL,
+//           storageBucket: process.env.FLAMELINK_STORAGE_BUCKET
+//         })
+//       } catch (e) {
+//         console.log('Admin app already exists')
+//       }
+//     } else {
+//       const firebase = require('firebase/app')
+//       // require('firebase/auth')
+//       require('firebase/firestore')
+//       require('firebase/database')
+//       require('firebase/storage')
+//
+//       if (!firebase.apps.length) {
+//         firebaseApp = firebase.initializeApp({
+//           apiKey: process.env.FLAMELINK_API_KEY,
+//           authDomain: process.env.FLAMELINK_AUTH_DOMAIN,
+//           databaseURL: process.env.FLAMELINK_DB_URL,
+//           projectId: process.env.FLAMELINK_PROJECT_ID,
+//           storageBucket: process.env.FLAMELINK_STORAGE_BUCKET,
+//           messagingSenderId: process.env.FLAMELINK_MESSAGING_SENDER_ID
+//         })
+//       } else {
+//         firebaseApp = firebase.app()
+//       }
+//     }
+//
+//     app.flamelink = flamelink({
+//       firebaseApp,
+//       env: 'production', // optional, defaults to `production`
+//       locale: 'fr', // optional, defaults to `en-US`
+//       dbType: 'cf' // optional, defaults to `rtdb` - can be 'rtdb' or 'cf' (Realtime DB vs Cloud Firestore)
+//     })
+//
+//   }
+// }
+/* END meant to be better but doesn't work */
+
 
 /* OLD VERSION
 

@@ -70,7 +70,7 @@
             }
         },
         data() {
-            return { 
+            return {
                 elements: [],
                 pageTitle: 'Halakha',
                 pageTitleHe: 'הלכה',
@@ -117,6 +117,21 @@
                     else this.entries[i].classList.add("card-hidden");
                 }
             }
+        },
+      async fetch({ app }) {
+        try {
+          this.elements = await app.flamelink.content.get({
+            schemaKey: 'minhag',
+            fields: ['title', 'url', 'author', 'description', 'thumbnail', 'tags'],
+            populate: true
+          })
+          this.loading = false;
+
+        } catch (error) {
+          console.error('Something went wrong while retrieving the entry. Details:', error);
+          return { loading: false, error: true }
         }
+      },
+      fetchOnServer: false
     };
 </script>
