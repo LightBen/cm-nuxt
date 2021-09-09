@@ -63,12 +63,12 @@ input {
 
 .container { padding: 0 var(--spacing); }
 
-.illustration {
-  display: block;
-  width: 100%;
-  max-width: 600px;
-  max-height: 300px;
+.page-illustration {
   margin: 0 auto var(--spacing);
+  text-align: center;
+  > img {
+    max-height: 300px;
+  }
 }
 
 p, li, #page-content {
