@@ -92,10 +92,11 @@ export default {
   },
   async asyncData({app}) {
     try {
-      const general = app.flamelink.content.get({
+      const data = await app.flamelink.content.get({
         schemaKey: 'general',
         // populate: true
       })
+      // console.log({data})
       return {
         // pageTitle: general.title,
         pageTitle: data['56Mopx0dRrhGql4KrFQX'].title,

@@ -29,7 +29,13 @@ export default ({app}) => {
     firebaseApp = firebase.app()
   }
 
-  app.flamelink = flamelink({firebaseApp, dbType: 'cf'})
+  app.flamelink = flamelink({
+    firebaseApp,
+    env: 'production', // optional, defaults to `production`
+    locale: 'fr', // optional, defaults to `en-US`
+    dbType: 'cf' // optional, defaults to `rtdb` - can be 'rtdb' or 'cf' (Realtime DB vs Cloud Firestore)
+  })
+
 }
 /* END NEW VERSION */
 
