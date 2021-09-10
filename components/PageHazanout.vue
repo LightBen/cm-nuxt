@@ -51,6 +51,7 @@ export default {
     },
     methods: {
         getContent() {
+            console.log(this.$flamelinkApp, 'FLAM')
             this.$flamelinkApp.content.get({
                 schemaKey: 'hazanout',
                 entryId: this.dataEntryId

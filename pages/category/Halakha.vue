@@ -79,34 +79,34 @@
             }
         },
         mounted() {
-             // this.$root.$on('langChanged', this.getContent);
-             // this.setPageTitle();
+             this.$root.$on('langChanged', this.getContent);
+             this.setPageTitle();
         },
         created() {
-            // this.getContent()
+            this.getContent()
         },
         methods: {
-            // getContent() {
-            //     this.$flamelinkApp.content.get({
-            //         schemaKey: 'minhag',
-            //         fields: ['title', 'url', 'author', 'description', 'thumbnail', 'tags']
-            //     })
-            //     .then(elements => {
-            //         this.elements = elements;
-            //         this.loading = false;
-            //         setTimeout(() => {
-            //             this.entries = document.querySelectorAll('.grid-element')
-            //         }, 100);
-            //     })
-            // },
-            // setPageTitle() {
-            //     this.$flamelinkApp.settings.getLocale()
-            //     .then(locale => {
-            //         if (locale === 'he') {
-            //             this.pageTitle = this.pageTitleHe
-            //         }
-            //     })
-            // },
+            getContent() {
+                this.$flamelinkApp.content.get({
+                    schemaKey: 'minhag',
+                    fields: ['title', 'url', 'author', 'description', 'thumbnail', 'tags']
+                })
+                .then(elements => {
+                    this.elements = elements;
+                    this.loading = false;
+                    setTimeout(() => {
+                        this.entries = document.querySelectorAll('.grid-element')
+                    }, 100);
+                })
+            },
+            setPageTitle() {
+                this.$flamelinkApp.settings.getLocale()
+                .then(locale => {
+                    if (locale === 'he') {
+                        this.pageTitle = this.pageTitleHe
+                    }
+                })
+            },
             filterSearch(event) {
                 let value = event.target.value;
                 for (var i=0, l=this.entries.length; i<l; i++) {

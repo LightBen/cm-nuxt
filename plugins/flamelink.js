@@ -35,8 +35,9 @@ export default ({app}) => {
     locale: 'fr', // optional, defaults to `en-US`
     dbType: 'cf' // optional, defaults to `rtdb` - can be 'rtdb' or 'cf' (Realtime DB vs Cloud Firestore)
   })
-
 }
+
+
 /* END NEW VERSION */
 
 /* meant to be better but doesn't work */
