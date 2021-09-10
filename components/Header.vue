@@ -163,12 +163,14 @@ export default {
     },
     mounted() {
         this.lang = localStorage.getItem('lang');
+        if (!this.lang) {
+            localStorage.setItem('lang', 'fr');
+        }
         this.getLang();
         this.getContent();
     },
     methods: {
         getContent() {
-            console.log(this.$flamelinkApp);
             this.$flamelinkApp.content.get({
                 schemaKey: 'general',
             })

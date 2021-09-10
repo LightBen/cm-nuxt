@@ -1,15 +1,23 @@
 import Vue from 'vue'
 
 
-import firebase from "firebase/app"
-import "firebase/storage"
-import "firebase/firestore"
+// import firebase from "firebase/app"
+// import "firebase/storage"
+// import "firebase/firestore"
 
 import flamelink from 'flamelink/app'
 import 'flamelink/content'
 import 'flamelink/storage'
 import 'flamelink/navigation'
 import 'flamelink/settings'
+
+const firebase = require('firebase/app')
+// require('firebase/auth')
+require('firebase/firestore')
+require('firebase/database')
+require('firebase/storage')
+
+
 
 const FlamelinkPlugin = {
   install(Vue, options) {
@@ -29,13 +37,13 @@ const FlamelinkPlugin = {
 
 
 const firebaseConfig = {
-    apiKey: "AIzaSyBrcRfVgYgMsno3CJTDRM40FIqYjdeJfD8", //process.env.NUXT_APP_FLAMELINK_API_KEY,
-    authDomain: "constantine-minhagim.firebaseapp.com", //process.env.NUXT_APP_FLAMELINK_AUTH_DOMAIN,
-    databaseURL: "https://constantine-minhagim.firebaseio.com", //process.env.NUXT_APP_FLAMELINK_DB_URL,
-    projectId: "constantine-minhagim", //process.env.NUXT_APP_FLAMELINK_PROJECT_ID,
-    storageBucket: "constantine-minhagim.appspot.com", //process.env.NUXT_APP_FLAMELINK_STORAGE_BUCKET,
-    messagingSenderId: "710107902876", //process.env.NUXT_APP_FLAMELINK_MESSAGING_SENDER_ID,
-    appId: "1:710107902876:web:5367581c2fd3cc500f0e59", //process.env.NUXT_APP_FLAMELINK_APP_ID,
+    apiKey: "AIzaSyBrcRfVgYgMsno3CJTDRM40FIqYjdeJfD8", 
+    authDomain: "constantine-minhagim.firebaseapp.com",
+    databaseURL: "https://constantine-minhagim.firebaseio.com", 
+    projectId: "constantine-minhagim", 
+    storageBucket: "constantine-minhagim.appspot.com", 
+    messagingSenderId: "710107902876", 
+    appId: "1:710107902876:web:5367581c2fd3cc500f0e59", 
     measurementId: "G-Y2V9JBDVXG", //process.env.NUXT_APP_FLAMELINK_MEASUREMENT_ID
 }
 
