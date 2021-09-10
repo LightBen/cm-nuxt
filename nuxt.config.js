@@ -29,7 +29,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: '~/plugins/main.js', mode: 'client'},
-    '@/plugins/flamelink'
+    {src: '~/plugins/vue-npm-in-nuxt.js', ssr: false},
+    '@/plugins/flamelink',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

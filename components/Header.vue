@@ -27,8 +27,8 @@
                             <use xlink:href="#icon-donate" href="#icon-donate" />
                         </svg>
                     </router-link> -->
-                    <div id="menu-lang" class="menu-top-icon lang-toggle">
-                    <!-- <div id="menu-lang" class="menu-top-icon lang-toggle" @click="changeLang"> -->
+                    <!-- <div id="menu-lang" class="menu-top-icon lang-toggle"> -->
+                    <div id="menu-lang" class="menu-top-icon lang-toggle" @click="changeLang">
                         <svg class="icon-lang">
                             <use xlink:href="#icon-lang" href="#icon-lang" />
                         </svg>
@@ -163,36 +163,37 @@ export default {
     },
     mounted() {
         this.lang = localStorage.getItem('lang');
-        // this.getLang();
-        // this.getContent();
+        this.getLang();
+        this.getContent();
     },
     methods: {
-        // getContent() {
-        //     this.$flamelinkApp.content.get({
-        //         schemaKey: 'general',
-        //     })
-        //     .then(data => {
-        //         // console.log('data: ', data);
-        //         // this.pageTitle = data['56Mopx0dRrhGql4KrFQX'].title;
-        //         this.siteTitle1 = data['hWHhdCrUx34iDIsPZokP'].title;
-        //         this.siteTitle2 = data['crXGbshLALxsrrmX0APz'].title;
-        //     })
-        //     .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
-        // },
-        // getLang() {
-        //     this.$flamelinkApp.settings.setLocale(this.lang)
-        //         .then(locale => {
-        //             document.documentElement.setAttribute('lang', locale);
-        //             this.getContent();
-        //             this.$root.$emit('langChanged', locale);
-        //         })
-        //         .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
-        // },
-        // changeLang() {
-        //     this.lang = this.lang === 'fr' ? 'he' : 'fr';
-        //     localStorage.setItem('lang', this.lang);
-        //     this.getLang();
-        // }
+        getContent() {
+            console.log(this.$flamelinkApp);
+            this.$flamelinkApp.content.get({
+                schemaKey: 'general',
+            })
+            .then(data => {
+                // console.log('data: ', data);
+                this.pageTitle = data['56Mopx0dRrhGql4KrFQX'].title;
+                this.siteTitle1 = data['hWHhdCrUx34iDIsPZokP'].title;
+                this.siteTitle2 = data['crXGbshLALxsrrmX0APz'].title;
+            })
+            .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+        },
+        getLang() {
+            this.$flamelinkApp.settings.setLocale(this.lang)
+                .then(locale => {
+                    document.documentElement.setAttribute('lang', locale);
+                    this.getContent();
+                    // this.$root.$emit('langChanged', locale);
+                })
+                .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
+        },
+        changeLang() {
+            this.lang = this.lang === 'fr' ? 'he' : 'fr';
+            localStorage.setItem('lang', this.lang);
+            this.getLang();
+        }
     },
 };
 </script>
