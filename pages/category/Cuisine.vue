@@ -1,4 +1,6 @@
 <template>
+<div>
+    <client-only>
     <div id="cuisine" class="page-category" :class="[ (this.grid) ? 'grid' : 'list' ]">
         <transition name="fade">
             <Loading v-if="loading" />
@@ -55,6 +57,8 @@
             </div>
         </div>
     </div>
+    </client-only>
+</div>    
 </template>
 
 <script>

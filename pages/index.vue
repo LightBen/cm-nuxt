@@ -1,4 +1,6 @@
 <template>
+<div>
+  <client-only>
   <div id="home">
     <section class="section-full full-img" id="welcome">
       <div class="section-content">
@@ -74,6 +76,8 @@
       </div>
     </section>
   </div>
+  </client-only>
+</div>  
 </template>
 
 <style src="./home.scss" lang="scss"></style>

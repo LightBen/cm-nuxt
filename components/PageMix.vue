@@ -43,24 +43,37 @@ export default {
       type: String
     }
   },
-  async asyncData({app}) {
-    try {
-      const pageContent = app.flamelink.content.get({
+  mounted() {
+    console.log(this, "vueapp")
+    this.loadData({app})
+
+  },
+  methods: {
+    async loadData (app) {
+      try {
+      const pageContent = this.$flamelinkApp.content.get({
         schemaKey: 'pages',
         entryId: this.$route.meta.entryId,
         // entryId: 'EJPLGthI0WMQ0tlrqPsA', // example: about page entry ID
         // populate: true
       })
-      return {
-        pageTitle: pageContent.title,
-        pageContent: pageContent.content,
-        dataEntryId: this.$route.meta.entryId,
-        loading: false,
-      }
+        .then((data) =>{
+        this.pageTitle =  data.title
+        this.pageContent = data.content
+        this.dataEntryId = this.$route.meta.entryId
+        this.loading = false
+        })
+        .catch((err) =>{
+          console.error('Something went wrong while retrieving the entry. Details:', error);
+          this.error = true;
+          this.loading = false;
+        })
+      
     } catch(error) {
       console.error('Something went wrong while retrieving the entry. Details:', error);
       return { loading: false, error: true }
     }
-  },
+    }
+  }
 }
 </script>

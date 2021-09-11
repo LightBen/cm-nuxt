@@ -187,14 +187,23 @@ export default {
                 .then(locale => {
                     document.documentElement.setAttribute('lang', locale);
                     this.getContent();
-                    // this.$root.$emit('langChanged', locale);
+                    // this.$nuxt.$emit('langChanged', locale);
+                })
+                .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
+        },
+        ChangeGetLang() {
+            this.$flamelinkApp.settings.setLocale(this.lang)
+                .then(locale => {
+                    document.documentElement.setAttribute('lang', locale);
+                    this.getContent();
+                    this.$nuxt.$emit('langChanged', locale);
                 })
                 .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
         },
         changeLang() {
             this.lang = this.lang === 'fr' ? 'he' : 'fr';
             localStorage.setItem('lang', this.lang);
-            this.getLang();
+            this.ChangeGetLang();
         }
     },
 };

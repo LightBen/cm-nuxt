@@ -1,4 +1,6 @@
 <template>
+<div>
+    <client-only>
     <div id="halakha" class="page-category" :class="[ (this.grid) ? 'grid' : 'list' ]">
         <transition name="fade">
             <Loading v-if="loading" />
@@ -55,6 +57,8 @@
             </div>
         </div>
     </div>
+    </client-only>
+</div>    
 </template>
 
 <script>
@@ -81,9 +85,10 @@
         mounted() {
              this.$root.$on('langChanged', this.getContent);
              this.setPageTitle();
+             this.getContent()
         },
         created() {
-            this.getContent()
+            // this.getContent()
         },
         methods: {
             getContent() {
@@ -118,9 +123,10 @@
                 }
             }
         },
-      async fetch({ app }) {
+      async asyncData (context) {
         try {
-          this.elements = await app.flamelink.content.get({
+            console.log(context.app.flamelink, 'datacon')
+          this.elements = await context.app.flamelink.content.get({
             schemaKey: 'minhag',
             fields: ['title', 'url', 'author', 'description', 'thumbnail', 'tags'],
             populate: true
