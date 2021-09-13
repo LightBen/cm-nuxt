@@ -83,7 +83,7 @@
             }
         },
         mounted() {
-             this.$root.$on('langChanged', this.getContent);
+             this.$nuxt.$on('langChanged', this.getContent());
              this.setPageTitle();
              this.getContent()
         },
@@ -123,21 +123,23 @@
                 }
             }
         },
-      async asyncData (context) {
-        try {
-            console.log(context.app.flamelink, 'datacon')
-          this.elements = await context.app.flamelink.content.get({
-            schemaKey: 'minhag',
-            fields: ['title', 'url', 'author', 'description', 'thumbnail', 'tags'],
-            populate: true
-          })
-          this.loading = false;
-
-        } catch (error) {
-          console.error('Something went wrong while retrieving the entry. Details:', error);
-          return { loading: false, error: true }
-        }
-      },
+    //   async asyncData (context) {
+    //     try {
+    //     //     console.log(context.app.flamelink, 'datacon')
+    //     //   this.elements = await context.app.flamelink.content.get({
+    //     //     schemaKey: 'minhag',
+    //     //     fields: ['title', 'url', 'author', 'description', 'thumbnail', 'tags'],
+    //     //     populate: true
+    //     //   })
+    //     //   this.loading = false;
+    //         // this.getContent()
+    //         console.log(context)
+    //     } catch (error) {
+    //         console.log(error, 'err')
+    //       console.error('Something went wrong while retrieving the entry. Details:', error);
+    //     //   return { loading: false, error: true }
+    //     }
+    //   },
       fetchOnServer: false
     };
 </script>

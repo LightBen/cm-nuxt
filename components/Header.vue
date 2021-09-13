@@ -163,9 +163,10 @@ export default {
     },
     mounted() {
         this.lang = localStorage.getItem('lang');
-        if (!this.lang) {
+        if (!localStorage.getItem('lang')) {
             localStorage.setItem('lang', 'fr');
         }
+        // this.$nuxt.$on('langChanged', this.getContent);
         this.getLang();
         this.getContent();
     },
@@ -187,7 +188,7 @@ export default {
                 .then(locale => {
                     document.documentElement.setAttribute('lang', locale);
                     this.getContent();
-                    // this.$nuxt.$emit('langChanged', locale);
+                    
                 })
                 .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
         },
@@ -195,8 +196,8 @@ export default {
             this.$flamelinkApp.settings.setLocale(this.lang)
                 .then(locale => {
                     document.documentElement.setAttribute('lang', locale);
-                    this.getContent();
-                    this.$nuxt.$emit('langChanged', locale);
+                    // this.$forceUpdate();
+                    this.$router.go(0)
                 })
                 .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
         },
@@ -204,6 +205,7 @@ export default {
             this.lang = this.lang === 'fr' ? 'he' : 'fr';
             localStorage.setItem('lang', this.lang);
             this.ChangeGetLang();
+            // this.$nuxt.refresh();
         }
     },
 };

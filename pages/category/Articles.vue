@@ -108,9 +108,10 @@
         mounted() {
             this.$root.$on('langChanged', this.getContent);
             this.setPageTitle();
+            this.getContent()
         },
         created() {
-            this.getContent()
+            // this.getContent()
         },
         methods: {
             getContent() {
