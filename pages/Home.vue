@@ -114,10 +114,11 @@ export default {
   },
   components: {},
   created() {
-    this.getContent();
+    // this.getContent();
   },
   mounted() {
     this.$root.$on('langChanged', this.getContent);
+    this.getContent();
   },
   methods: {
     getContent() {
@@ -134,21 +135,25 @@ export default {
     }
   },
   beforeCreate: function () {
-    document.body.classList.add('is-homepage');
+    if (process.client) {
+      document.body.classList.add('is-homepage');
+    }
   },
   beforeDestroy: function () {
-    document.body.classList.remove('is-homepage');
-  },
-  async asyncData({app}) {
-    try {
-      const myContent = await app.flamelink.content.get('schemaKey', {
-        schemaKey: 'general'
-      })
-      return {myContent}
-    } catch (err) {
-      console.log(err)
+    if (process.client) {
+      document.body.classList.remove('is-homepage');
     }
-  }
+  },
+  // async asyncData({app}) {
+  //   try {
+  //     const myContent = await app.flamelink.content.get('schemaKey', {
+  //       schemaKey: 'general'
+  //     })
+  //     return {myContent}
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
 
 };
 </script>
