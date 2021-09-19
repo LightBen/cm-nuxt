@@ -12,7 +12,22 @@ export default {
         hid: 'description',
         name: 'description',
         content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
-      }
+      },
+      {
+        hid: 'og:title',
+        name: 'og:title',
+        content: 'Constantine Minhagim',
+      },
+      // {
+      //   hid: 'og:image',
+      //   property: 'og:image',
+      //   content: `/${this.image}`,
+      // },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
+      },
     ],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}

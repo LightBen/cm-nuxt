@@ -43,6 +43,23 @@ export default {
       title: this.pageTitle,
     }
   },
+  // head() {
+  //   return {
+  //     title: this.pageTitle,
+  //     meta: [
+  //       {
+  //         hid: 'og:title',
+  //         name: 'og:title',
+  //         content: this.pageContent.title,
+  //       },
+  //       {
+  //         hid: 'og:image',
+  //         property: 'og:image',
+  //         content: this.pageThumbnail,
+  //       },
+  //     ],
+  //   }
+  // },
   data() {
     return {
       dataEntryId: '',
@@ -50,6 +67,7 @@ export default {
       pageAuthor: '',
       pageContent: '',
       pageBanner: '',
+      pageThumbnail: '',
       loading: true
     }
   },
@@ -73,6 +91,7 @@ export default {
           this.pageAuthor = pageContent.author;
           this.pageContent = pageContent.content;
           this.pageBanner = pageContent.banner;
+          this.pageThumbnail = pageContent.thumbnail;
           this.loading = false;
         })
         .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
