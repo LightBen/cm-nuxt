@@ -1,13 +1,9 @@
 import Vue from "vue"
-// import App from "./App.vue"
-// import router from "./router"
-// import "./registerServiceWorker"
 import VueMeta from "vue-meta"
 
 import firebase from "firebase/app"
 import "firebase/storage"
 import "firebase/firestore"
-
 // import "firebase/messaging"
 
 import FlamelinkPlugin from "./flamelink"
@@ -18,27 +14,7 @@ Vue.component('page-mix', PageMix);
 import PageCategory from '@/components/PageCategory.vue'
 Vue.component('page-category', PageCategory);
 
-// const firebaseConfig = {
-//   apiKey: process.env.NUXT_ENV_FLAMELINK_API_KEY,
-//   authDomain: process.env.NUXT_ENV_FLAMELINK_AUTH_DOMAIN,
-//   databaseURL: process.env.NUXT_ENV_FLAMELINK_DB_URL,
-//   projectId: process.env.NUXT_ENV_FLAMELINK_PROJECT_ID,
-//   storageBucket: process.env.NUXT_ENV_FLAMELINK_STORAGE_BUCKET,
-//   messagingSenderId: process.env.NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID,
-//   appId: process.env.NUXT_ENV_FLAMELINK_APP_ID,
-//   measurementId: process.env.NUXT_ENV_FLAMELINK_MEASUREMENT_ID
-// }
 
-// const firebaseApp = firebase.initializeApp(firebaseConfig)
-
-
-
-// Vue.use(FlamelinkPlugin, {
-//     firebaseApp,
-//     env: 'production',
-//     locale: 'fr', // fr, en-US, he
-//     dbType: 'cf'
-// })
 
 // console.log({firebaseConfig});
 Vue.use(VueMeta, {
@@ -126,30 +102,6 @@ if (currentTheme) {
     }
 }
 /* END THEME CHECK */
-
-
-
-/* LANG CHECK */
-// If nothing in local storage, set the lang local storage to he if user uses Hebrew otherwise french
-// const lang = localStorage.getItem('lang');
-// if (typeof lang === 'undefined' || lang === null) {
-//     if (navigator.language === 'fr' || navigator.language === 'fr-FR' || navigator.language === 'fra' || navigator.language === 'fre') {
-//         localStorage.setItem('lang', 'fr');
-//         Vue.flamelinkApp.settings.setLocale('fr')
-//         .then(locale => {
-//             document.documentElement.setAttribute('lang', locale);
-//         })
-//         .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
-//     } else {
-//         localStorage.setItem('lang', 'he');
-//         Vue.flamelinkApp.settings.setLocale('he')
-//         .then(locale => {
-//             document.documentElement.setAttribute('lang', locale);
-//         })
-//         .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
-//     }
-// }
-/* END LANG CHECK */
 
 
 

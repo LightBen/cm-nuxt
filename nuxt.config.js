@@ -64,7 +64,10 @@ export default {
             measurementId: process.env.NUXT_ENV_FLAMELINK_MEASUREMENT_ID
           },
           services: {
-            auth: true // Just as example. Can be any other service.
+            auth: true, // Just as example. Can be any other service.
+            firestore: {
+              enablePersistence: true
+            },
           }
         }
       ],
