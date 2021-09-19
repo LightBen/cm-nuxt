@@ -28,14 +28,18 @@
                         </svg>
                     </router-link> -->
                     <!-- <div id="menu-lang" class="menu-top-icon lang-toggle"> -->
+<!--                    <div id="menu-lang" class="menu-top-icon lang-toggle" @click="changeLang">-->
+<!--                        <svg class="icon-lang">-->
+<!--                            <use xlink:href="#icon-lang" href="#icon-lang" />-->
+<!--                        </svg>-->
+<!--                        <label>-->
+<!--                            <span class="lang-fr">עברית</span>-->
+<!--                            <span class="lang-he">Français</span>-->
+<!--                        </label>-->
+<!--                    </div>-->
                     <div id="menu-lang" class="menu-top-icon lang-toggle" @click="changeLang">
-                        <svg class="icon-lang">
-                            <use xlink:href="#icon-lang" href="#icon-lang" />
-                        </svg>
-                        <label>
-                            <span class="lang-fr">עברית</span>
-                            <span class="lang-he">Français</span>
-                        </label>
+                        <img src="~/assets/img/flag-il.png" alt="עברית" class="lang-img lang-fr" />
+                        <img src="~/assets/img/flag-fr.png" alt="Français" class="lang-img lang-he" />
                     </div>
                     <div class="header-btn drawer-toggle" id="mainMenuBtn">
                         <div class="menu-label">
@@ -188,7 +192,7 @@ export default {
                 .then(locale => {
                     document.documentElement.setAttribute('lang', locale);
                     this.getContent();
-                    
+
                 })
                 .catch(error => console.error('Something went wrong while setting the locale. Details:', error));
         },

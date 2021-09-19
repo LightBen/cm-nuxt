@@ -87,7 +87,13 @@ header {
         }
     }
 
-    #mainNav {
+    .lang-img {
+      --size: 32px;
+      width: var(--size);
+      height: var(--size);
+    }
+
+  #mainNav {
         font-family: var(--font-family);
         position: fixed;
         display: block;
