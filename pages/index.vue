@@ -52,8 +52,32 @@
             <span class="home-section-title lang-fr">Articles</span>
             <span class="home-section-title lang-he">מאמרים</span>
           </NuxtLink>
+          <a href="https://www.youtube.com/channel/UCuZ5tVv28xXn6kQcv_u5ufg" target="_blank" class="drive" rel="noopener">
+            <svg class="icon-home-section">
+              <use href="#icon-youtube" />
+            </svg>
+            <span class="home-section-title">
+                        <span class="lang-fr">YouTube</span>
+                        <span class="lang-he">יוטוב</span>
+                        <svg class="icon-label d-none">
+                            <use href="#icon-external" />
+                        </svg>
+                    </span>
+          </a>
+          <a href="https://www.facebook.com/groups/185262976153983" target="_blank" class="drive" rel="noopener">
+            <svg class="icon-home-section">
+              <use href="#icon-fb" />
+            </svg>
+            <span class="home-section-title">
+                        <span class="lang-fr">Facebook</span>
+                        <span class="lang-he">פייסבוק</span>
+                        <svg class="icon-label d-none">
+                            <use href="#icon-external" />
+                        </svg>
+                    </span>
+          </a>
           <a href="https://drive.google.com/drive/folders/0BzlEWQTUwxa6YnRYYkJFU0NWalE?usp=sharing" target="_blank"
-             class="drive" rel="noopener">
+             class="drive d-none" rel="noopener">
             <svg class="icon-home-section">
               <use href="#icon-storage"/>
             </svg>
@@ -65,7 +89,7 @@
                         </svg>
                     </span>
           </a>
-          <NuxtLink :to="{ name: 'Home' }" class="siddour section-disabled">
+          <NuxtLink :to="{ name: 'Home' }" class="siddour section-disabled d-none">
             <svg class="icon-home-section">
               <use href="#icon-book-fill"/>
             </svg>
@@ -77,7 +101,7 @@
     </section>
   </div>
   </client-only>
-</div>  
+</div>
 </template>
 
 <style src="./home.scss" lang="scss"></style>
