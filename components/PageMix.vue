@@ -44,7 +44,7 @@ export default {
     }
   },
   mounted() {
-    console.log(this, "vueapp")
+    // console.log(this, "vueapp")
     this.loadData({app})
 
   },
@@ -68,7 +68,7 @@ export default {
           this.error = true;
           this.loading = false;
         })
-      
+
     } catch(error) {
       console.error('Something went wrong while retrieving the entry. Details:', error);
       return { loading: false, error: true }

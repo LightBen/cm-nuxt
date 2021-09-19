@@ -58,7 +58,7 @@
         </div>
     </div>
     </client-only>
-</div>    
+</div>
 </template>
 
 <script>
@@ -74,7 +74,7 @@
             }
         },
         data() {
-            return { 
+            return {
                 elements: [],
                 pageTitle: 'Cuisine',
                 pageTitleHe: 'מתכונים',
@@ -86,7 +86,7 @@
              this.$root.$on('langChanged', this.getContent);
              this.setPageTitle();
             this.getContent()
-             
+
         },
         created() {
             // this.getContent()
@@ -103,7 +103,7 @@
                     setTimeout(() => {
                         this.entries = document.querySelectorAll('.grid-element')
                     }, 100);
-                    console.log(elements);
+                    // console.log(elements);
                 })
             },
             setPageTitle() {
