@@ -1,13 +1,13 @@
 <template>
 <div>
-    
+
     <client-only>
     <div id="cuisine" class="page-category" :class="[ (this.grid) ? 'grid' : 'list' ]">
         <transition name="fade">
             <Loading v-if="loading" />
         </transition>
         <div class="page-title-container">
-    
+
             <div class="container">
                 <h1 id="page-title">
                     <span class="lang-fr">Cuisine</span>
@@ -58,7 +58,7 @@
                 </router-link>
             </div>
         </div>
-        
+
     </div>
     </client-only>
 </div>
@@ -74,7 +74,7 @@
             meta: [
                 {
                 name: 'description',
-                content: 'Cuisine section.'
+                content: 'Cuisine | Constantine Minhagim'
                 },
                 {
                 property: 'og:type',
@@ -86,7 +86,7 @@
                 },
                 {
                 property: 'og:description',
-                content: 'Cuisine section.'
+                content: 'Cuisine | Constantine Minhagim'
                 }]
                 // {
                 //   property: 'og:image',

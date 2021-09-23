@@ -22,7 +22,7 @@
           </div>
         </div>
         <div class="page-illustration" v-if="pageBanner && pageBanner.length">
-          <img :src="pageBanner" alt="Illustration" class="" />
+          <img :src="pageBanner" alt="Illustration" class=""/>
         </div>
         <div id="page-content" v-html="pageContent"></div>
       </div>
@@ -33,37 +33,36 @@
 
 <script>
 import Loading from '@/components/Loading'
-import { mapMutations } from 'vuex'
+import {mapMutations} from 'vuex'
 
 export default {
-  head () {
+  head() {
     const title = 'Constantine Minhagim'
-      return {
+    return {
       title,
       meta: [
-          {
+        {
           name: 'description',
-          content: 'Halakha section.'
-          },
-          {
+          content: 'Cuisine | Constantine Minhagim'
+        },
+        {
           name: 'og:type',
           content: 'website'
-          },
-          {
+        },
+        {
           name: 'og:title',
           content: 'Constantine Minhagim'
-          },
-          {
+        },
+        {
           name: 'og:description',
-          content: 'Halakha section.'
-          },
-          {
-            name: 'og:image',
-            content: '/cm-logo-full.png'
-          }
-          ]
-          
-      }
+          content: 'Cuisine | Constantine Minhagim'
+        },
+        {
+          name: 'og:image',
+          content: '/cm-logo-full.png'
+        }
+      ]
+    }
   },
   name: 'PageCuisine',
   components: {
@@ -104,19 +103,19 @@ export default {
     }
   },
   computed: {
-    cuisinePage () {
+    cuisinePage() {
       return this.$store.state.cuisinePage
     }
   },
   props: ['entryId'],
-  mounted () {
+  mounted() {
     this.dataEntryId = this.entryId;
     if (!this.dataEntryId) {
       this.dataEntryId = this.$route.params.cuisine_url
     }
     this.getContent();
     this.$root.$on('langChanged', this.getContent);
-        
+
   },
   methods: {
     getContent() {
