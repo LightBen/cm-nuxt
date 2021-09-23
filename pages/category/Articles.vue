@@ -96,21 +96,22 @@
                 content: 'articales section.'
                 },
                 {
-                property: 'og:type',
+                name: 'og:type',
                 content: 'website'
                 },
                 {
-                property: 'og:title',
+                name: 'og:title',
                 content: title
                 },
                 {
                 property: 'og:description',
                 content: 'its artical section.'
+                },
+                {
+                  property: 'og:image',
+                  content: '/cm-logo-full.png'
                 }]
-                // {
-                //   property: 'og:image',
-                //   content: '../../assets/cm-logo-full.png'
-                // }
+                
             }
         },
         name: "Articles",

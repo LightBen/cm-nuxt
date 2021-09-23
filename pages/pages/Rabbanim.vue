@@ -15,19 +15,19 @@ export default {
             content: 'Rabbanim page of Constantine Minhagim.'
             },
             {
-            property: 'og:type',
+            name: 'og:type',
             content: 'website'
             },
             {
-            property: 'og:title',
+            name: 'og:title',
             content: title
             },
             {
-            property: 'og:description',
+            name: 'og:description',
             content: 'Rabbanim page of Constantine Minhagim.'
             },
             {
-            property: 'og:image',
+            name: 'og:image',
             content: '/cm-logo-full.png'
             }]
             

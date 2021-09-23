@@ -22,6 +22,35 @@
 <script>
 import Loading from '@/components/Loading'
 export default {
+    head () {
+        const title = 'Constantine Minhagim'
+        return {
+        title,
+        meta: [
+            {
+                name: 'description',
+                content: 'Your description here....'
+            },
+            {
+                name: 'og:type',
+                content: 'website'
+            },
+            {
+                name: 'og:title',
+                content:  'Constantine Minhagim'
+            },
+            {
+                property: 'og:description',
+                content: 'Your description here...'
+            },
+            {
+                property: 'og:image',
+                content: '/cm-logo-full.png'
+            }
+            ]
+            
+        }
+    },
     name: 'PageHalakha',
     components: {
         Loading
@@ -41,27 +70,47 @@ export default {
         }
     },
     props: ['entryId'],
-    mounted() {
+    computed: {
+    ogPageHalakha () {
+        return this.$store.state.ogPageHalakha
+        }
+    },
+    async mounted() {
         this.dataEntryId = this.entryId;
         if (!this.dataEntryId) {
             this.dataEntryId = this.$route.params.halakha_url
         }
-        this.getContent();
+        await this.getContent();
         this.$root.$on('langChanged', this.getContent);
+        document.querySelector('meta[name="og:title"]').setAttribute("content", this.ogPageHalakha.pageTitle)
+        document.querySelector('meta[property="og:image"]').setAttribute("content", this.ogPageHalakha.pageThumbnail)
+        document.querySelector('title').textContent = this.ogPageHalakha.pageTitle
     },
     methods: {
-        getContent() {
-            this.$flamelinkApp.content.get({
-                schemaKey: 'minhag',
-                entryId: this.dataEntryId
-            })
-            .then(pageContent => {
-                this.pageTitle = pageContent.title;
-                this.pageContent = pageContent.content;
-                this.pageBanner = pageContent.banner;
-                this.loading = false;
-            })
-            .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+        async getContent() {
+            try {
+                const pageContent = await this.$flamelinkApp.content.get({
+                    schemaKey: 'minhag',
+                    entryId: this.dataEntryId
+                })
+                if (pageContent) {
+                    // console.log(pageContent.thumbnail)
+                    let ogJson = {
+                        pageTitle: pageContent.title,
+                        pageThumbnail: pageContent.thumbnail
+                    }
+                    this.$store.commit('setogPageHalakha', ogJson)
+                    this.pageTitle = pageContent.title;
+                    this.pageContent = pageContent.content;
+                    this.pageBanner = pageContent.banner;
+                    this.loading = false;
+                }  
+            } catch (error) {
+                console.error('Something went wrong while retrieving the entry. Details:', error);
+            }
+            
+            // })
+            // .catch(error => );
         }
     }
 };

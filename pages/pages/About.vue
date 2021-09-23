@@ -14,19 +14,19 @@ export default {
           content: 'Share feedbacks & suggestions about  with our team to help us shape our product.'
         },
         {
-          property: 'og:type',
+          name: 'og:type',
           content: 'website'
         },
         {
-          property: 'og:title',
+          name: 'og:title',
           content: title
         },
         {
-          property: 'og:description',
+          name: 'og:description',
           content: 'Share feedbacks & suggestions about with our team to help us shape our product.'
         },
         {
-          property: 'og:image',
+          name: 'og:image',
           content: '/cm-logo-full.png'
         }]
         

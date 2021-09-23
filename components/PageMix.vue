@@ -22,6 +22,35 @@
 import Loading from '@/components/Loading'
 
 export default {
+  head () {
+      const title = 'Constantine Minhagim'
+      return {
+      title,
+      meta: [
+          {
+              name: 'description',
+              content: 'Your description here....'
+          },
+          {
+              name: 'og:type',
+              content: 'website'
+          },
+          {
+              name: 'og:title',
+              content:  'Constantine Minhagim'
+          },
+          {
+              property: 'og:description',
+              content: 'Your description here...'
+          },
+          {
+              property: 'og:image',
+              content: '/cm-logo-full.png'
+          }
+          ]
+          
+      }
+  },
   name: 'PageMix',
   components: {
     Loading
@@ -43,36 +72,51 @@ export default {
       type: String
     }
   },
-  mounted() {
+  computed: {
+    ogPagemix () {
+      return this.$store.state.ogPagemix
+    }
+  },
+  async mounted() {
     // console.log(this, "vueapp")
-    this.loadData({app})
+    await this.loadData({app})
+    document.querySelector('meta[name="og:title"]').setAttribute("content", this.ogPagemix.pageTitle)
+    // document.querySelector('meta[property="og:image"]').setAttribute("content", this.ogPageHazanout.pageThumbnail)
+    document.querySelector('title').textContent = this.ogPagemix.pageTitle
 
   },
   methods: {
     async loadData (app) {
-      try {
-      const pageContent = this.$flamelinkApp.content.get({
-        schemaKey: 'pages',
-        entryId: this.$route.meta.entryId,
-        // entryId: 'EJPLGthI0WMQ0tlrqPsA', // example: about page entry ID
-        // populate: true
-      })
-        .then((data) =>{
-        this.pageTitle =  data.title
-        this.pageContent = data.content
-        this.dataEntryId = this.$route.meta.entryId
-        this.loading = false
-        })
-        .catch((err) =>{
+        try {
+          const pageContent = await this.$flamelinkApp.content.get({
+            schemaKey: 'pages',
+            entryId: this.$route.meta.entryId,
+            // entryId: 'EJPLGthI0WMQ0tlrqPsA', // example: about page entry ID
+            // populate: true
+          })
+          if (pageContent) {
+            let ogJson = {
+                pageTitle: pageContent.title,
+                // pageThumbnail: pageContent.thumbnail
+            }
+            // console.log(pageContent)
+            this.$store.commit('setogPagemix', ogJson)
+            this.pageTitle =  pageContent.title
+            this.pageContent = pageContent.content
+            this.dataEntryId = this.$route.meta.entryId
+            this.loading = false
+          }
+        } catch (error) {
           console.error('Something went wrong while retrieving the entry. Details:', error);
           this.error = true;
           this.loading = false;
-        })
-
-    } catch(error) {
-      console.error('Something went wrong while retrieving the entry. Details:', error);
-      return { loading: false, error: true }
-    }
+        }
+        // .then((data) =>{
+        
+        // })
+        // .catch((err) =>{
+          
+        // })
     }
   }
 }

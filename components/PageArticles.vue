@@ -36,19 +36,19 @@ export default {
       meta: [
           {
           name: 'description',
-          content: 'Halakha section.'
+          content: 'Your description here....'
           },
           {
-          property: 'og:type',
+          name: 'og:type',
           content: 'website'
           },
           {
-          property: 'og:title',
+          name: 'og:title',
           content:  'Constantine Minhagim'
           },
           {
           property: 'og:description',
-          content: 'Halakha section.'
+          content: 'Your description here...'
           },
           {
             property: 'og:image',
@@ -78,33 +78,46 @@ export default {
         }
     },
     props: ['entryId'],
-    mounted() {
+    computed: {
+    ogPageArticles () {
+        return this.$store.state.ogPageArticles
+        }
+    },
+    async mounted() {
         this.dataEntryId = this.entryId;
         if (!this.dataEntryId) {
             this.dataEntryId = this.$route.params.articles_url
         }
-        this.getContent();
+        await this.getContent();
         this.$root.$on('langChanged', this.getContent);
+        document.querySelector('meta[name="og:title"]').setAttribute("content", this.ogPageArticles.pageTitle)
+        document.querySelector('meta[property="og:image"]').setAttribute("content", this.ogPageArticles.banner)
+        document.querySelector('title').textContent = this.ogPageArticles.pageTitle
     },
     methods: {
-        getContent() {
-            this.$flamelinkApp.content.get({
+        async getContent() {
+            const pageContent = await this.$flamelinkApp.content.get({
                 schemaKey: 'articles',
                 entryId: this.dataEntryId
             })
-            .then(pageContent => {
-                let newTitleVal = this.cuisinePage + '| Constantine Minhagim'
-                let ogThumbnail = pageContent.thumbnail
-                document.querySelector('meta[property="og:title"]').setAttribute("content", newTitleVal)
-                document.querySelector('meta[property="og:image"]').setAttribute("content", ogThumbnail)
-                document.querySelector('title').textContent = newTitleVal
+            if (pageContent) {
+                // let newTitleVal = this.cuisinePage + '| Constantine Minhagim'
+                // let ogThumbnail = pageContent.thumbnail
+                let ogJson = {
+                    pageTitle: pageContent.title,
+                    pageBanner: pageContent.banner
+                }
+                this.$store.commit('setOgPageArticles', ogJson)
                 this.pageTitle = pageContent.title;
                 this.pageAuthor = pageContent.author;
                 this.pageContent = pageContent.content;
                 this.pageBanner = pageContent.banner;
                 this.loading = false;
-            })
-            .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+            }
+            // .then(pageContent => {
+                
+            // })
+            // .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
         }
     }
 };

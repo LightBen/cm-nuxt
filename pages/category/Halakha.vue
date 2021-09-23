@@ -71,24 +71,26 @@
             meta: [
                 {
                 name: 'description',
-                content: 'Halakha section.'
+                content: 'Your description here....'
                 },
                 {
-                property: 'og:type',
+                name: 'og:type',
                 content: 'website'
                 },
                 {
-                property: 'og:title',
-                content: title
+                name: 'og:title',
+                content:  title
                 },
                 {
                 property: 'og:description',
-                content: 'Halakha section.'
-                }]
-                // {
-                //   property: 'og:image',
-                //   content: '../../assets/cm-logo-full.png'
-                // }
+                content: 'Your description here...'
+                },
+                {
+                    property: 'og:image',
+                    content: '/cm-logo-full.png'
+                }
+                ]
+                
             }
         },
         name: "Halakha",

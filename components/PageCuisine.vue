@@ -52,17 +52,18 @@ export default {
         {
           name: 'og:title',
           content: 'Constantine Minhagim'
-        },
-        {
-          name: 'og:description',
-          content: 'Cuisine | Constantine Minhagim'
-        },
-        {
-          name: 'og:image',
-          content: '/cm-logo-full.png'
-        }
-      ]
-    }
+          },
+          {
+          property: 'og:description',
+          content: 'Halakha section.'
+          },
+          {
+            property: 'og:image',
+            content: '/cm-logo-full.png'
+          }
+          ]
+          
+      }
   },
   name: 'PageCuisine',
   components: {
@@ -103,39 +104,53 @@ export default {
     }
   },
   computed: {
-    cuisinePage() {
-      return this.$store.state.cuisinePage
+    cuisinePage () {
+      return this.$store.state.ogPageArticles
     }
   },
   props: ['entryId'],
-  mounted() {
+  async mounted () {
     this.dataEntryId = this.entryId;
     if (!this.dataEntryId) {
       this.dataEntryId = this.$route.params.cuisine_url
     }
-    this.getContent();
+    await this.getContent();
     this.$root.$on('langChanged', this.getContent);
-
+    let newTitle = this.cuisinePage.pageTitle + '| Constantine Minhagim'
+    console.log(this.cuisinePage.pageThumbnail)
+    document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
+    document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
+    document.querySelector('title').textContent = newTitle
+        
   },
   methods: {
-    getContent() {
-      this.$flamelinkApp.content.get({
-        schemaKey: 'cuisine',
-        entryId: this.dataEntryId
-      })
-        .then(pageContent => {
-          this.$store.commit('setCuisinePage', pageContent.title)
-          document.querySelector('meta[name="og:title"]').setAttribute("content", pageContent.title)
-          document.querySelector('meta[name="og:image"]').setAttribute("content", pageContent.thumbnail)
-          document.querySelector('title').textContent = pageContent.title
+    async getContent() {
+      try {
+        const pageContent = await this.$flamelinkApp.content.get({
+          schemaKey: 'cuisine',
+          entryId: this.dataEntryId
+        })
+
+      if (pageContent) {
+        let ogJson = {
+          pageTitle: pageContent.title,
+          pageThumbnail: pageContent.thumbnail
+        }
+        this.$store.commit('setOgPageArticles', ogJson)
           this.pageTitle = pageContent.title;
           this.pageAuthor = pageContent.author;
           this.pageContent = pageContent.content;
           this.pageBanner = pageContent.banner;
           this.pageThumbnail = pageContent.thumbnail;
           this.loading = false;
-        })
-        .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+      }
+      } catch (error) {
+        console.error('Something went wrong while retrieving the entry. Details:', error);
+      }
+        // .then(pageContent => {
+          
+        // })
+        // .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
     }
   }
 };

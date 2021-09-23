@@ -86,12 +86,13 @@
                 },
                 {
                 property: 'og:description',
-                content: 'Cuisine | Constantine Minhagim'
+                content: 'Cuisine section.'
+                },
+                {
+                  property: 'og:image',
+                  content: '/cm-logo-full.png'
                 }]
-                // {
-                //   property: 'og:image',
-                //   content: '../../assets/cm-logo-full.png'
-                // }
+                
             }
         },
         name: "Cuisine",

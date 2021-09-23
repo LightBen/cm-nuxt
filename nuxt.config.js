@@ -18,11 +18,11 @@ export default {
         name: 'og:title',
         content: 'Constantine Minhagim',
       },
-      // {
-      //   hid: 'og:image',
-      //   property: 'og:image',
-      //   content: `/${this.image}`,
-      // },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: '/cm-logo-full.png',
+      },
       {
         hid: 'og:description',
         property: 'og:description',

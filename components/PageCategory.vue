@@ -30,6 +30,35 @@
 <script>
 import Loading from '@/components/Loading'
 export default {
+    head () {
+        const title = 'Constantine Minhagim'
+        return {
+        title,
+        meta: [
+            {
+                name: 'description',
+                content: 'Your description here....'
+            },
+            {
+                name: 'og:type',
+                content: 'website'
+            },
+            {
+                name: 'og:title',
+                content:  'Constantine Minhagim'
+            },
+            {
+                property: 'og:description',
+                content: 'Your description here...'
+            },
+            {
+                property: 'og:image',
+                content: '/cm-logo-full.png'
+            }
+            ]
+            
+        }
+    },
     name: 'PageCategory',
     components: {
         Loading
