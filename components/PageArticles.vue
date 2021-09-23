@@ -29,6 +29,35 @@
 <script>
 import Loading from '@/components/Loading'
 export default {
+    head () {
+    const title = 'Constantine Minhagim'
+      return {
+      title,
+      meta: [
+          {
+          name: 'description',
+          content: 'Halakha section.'
+          },
+          {
+          property: 'og:type',
+          content: 'website'
+          },
+          {
+          property: 'og:title',
+          content:  'Constantine Minhagim'
+          },
+          {
+          property: 'og:description',
+          content: 'Halakha section.'
+          },
+          {
+            property: 'og:image',
+            content: '/cm-logo-full.png'
+          }
+          ]
+          
+      }
+  },
     name: 'PageArticles',
     components: {
         Loading
@@ -64,6 +93,11 @@ export default {
                 entryId: this.dataEntryId
             })
             .then(pageContent => {
+                let newTitleVal = this.cuisinePage + '| Constantine Minhagim'
+                let ogThumbnail = pageContent.thumbnail
+                document.querySelector('meta[property="og:title"]').setAttribute("content", newTitleVal)
+                document.querySelector('meta[property="og:image"]').setAttribute("content", ogThumbnail)
+                document.querySelector('title').textContent = newTitleVal
                 this.pageTitle = pageContent.title;
                 this.pageAuthor = pageContent.author;
                 this.pageContent = pageContent.content;

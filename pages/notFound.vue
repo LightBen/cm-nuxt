@@ -13,6 +13,34 @@
 
 <script>
 export default {
+    head () {
+    const title = 'notFound' + ' | Constantine Minhagim'
+    return {
+      title,
+      meta: [
+        {
+          name: 'description',
+          content: 'notFound.'
+        },
+        {
+          property: 'og:type',
+          content: 'website'
+        },
+        {
+          property: 'og:title',
+          content: title
+        },
+        {
+          property: 'og:description',
+          content: 'notFound.'
+        },
+        {
+          property: 'og:image',
+          content: '/cm-logo-full.png'
+        }]
+        
+    }
+    },
     name: 'notFound'
 };
 </script>

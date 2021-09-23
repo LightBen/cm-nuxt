@@ -1,11 +1,13 @@
 <template>
 <div>
+    
     <client-only>
     <div id="cuisine" class="page-category" :class="[ (this.grid) ? 'grid' : 'list' ]">
         <transition name="fade">
             <Loading v-if="loading" />
         </transition>
         <div class="page-title-container">
+    
             <div class="container">
                 <h1 id="page-title">
                     <span class="lang-fr">Cuisine</span>
@@ -56,6 +58,7 @@
                 </router-link>
             </div>
         </div>
+        
     </div>
     </client-only>
 </div>
@@ -64,6 +67,33 @@
 <script>
     import Loading from '@/components/Loading'
     export default {
+        head () {
+            const title = 'Cuisine | Constantine Minhagim'
+            return {
+            title,
+            meta: [
+                {
+                name: 'description',
+                content: 'Cuisine section.'
+                },
+                {
+                property: 'og:type',
+                content: 'website'
+                },
+                {
+                property: 'og:title',
+                content: title
+                },
+                {
+                property: 'og:description',
+                content: 'Cuisine section.'
+                }]
+                // {
+                //   property: 'og:image',
+                //   content: '../../assets/cm-logo-full.png'
+                // }
+            }
+        },
         name: "Cuisine",
         components: {
             Loading
@@ -83,6 +113,7 @@
             }
         },
         mounted() {
+            console.log(this)
              this.$root.$on('langChanged', this.getContent);
              this.setPageTitle();
             this.getContent()
@@ -123,7 +154,7 @@
                     }
                     else this.entries[i].classList.add("card-hidden");
                 }
-            }
+            },
         }
     };
 </script>

@@ -64,6 +64,33 @@
 <script>
     import Loading from '@/components/Loading'
     export default {
+        head () {
+            const title = 'Halakha | Constantine Minhagim'
+            return {
+            title,
+            meta: [
+                {
+                name: 'description',
+                content: 'Halakha section.'
+                },
+                {
+                property: 'og:type',
+                content: 'website'
+                },
+                {
+                property: 'og:title',
+                content: title
+                },
+                {
+                property: 'og:description',
+                content: 'Halakha section.'
+                }]
+                // {
+                //   property: 'og:image',
+                //   content: '../../assets/cm-logo-full.png'
+                // }
+            }
+        },
         name: "Halakha",
         components: {
             Loading

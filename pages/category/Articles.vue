@@ -86,6 +86,33 @@
 <script>
     import Loading from '@/components/Loading'
     export default {
+        head () {
+            const title = 'Articles | Constantine Minhagim'
+            return {
+            title,
+            meta: [
+                {
+                name: 'description',
+                content: 'articales section.'
+                },
+                {
+                property: 'og:type',
+                content: 'website'
+                },
+                {
+                property: 'og:title',
+                content: title
+                },
+                {
+                property: 'og:description',
+                content: 'its artical section.'
+                }]
+                // {
+                //   property: 'og:image',
+                //   content: '../../assets/cm-logo-full.png'
+                // }
+            }
+        },
         name: "Articles",
         components: {
             Loading
