@@ -25,6 +25,7 @@ const FlamelinkPlugin = {
 
     // Ensure app is available globally - useful for querying data not used in a view (eg. router setup, etc)
     Vue.flamelinkApp = app;
+    Vue.use(flamelink(options))
   }
 };
 

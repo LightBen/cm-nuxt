@@ -46,6 +46,7 @@ export default {
     {src: '~/plugins/main.js', mode: 'client'},
     {src: '~/plugins/vue-npm-in-nuxt.js', ssr: false},
     '@/plugins/flamelink',
+    '~/plugins/flamelink'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -137,7 +138,7 @@ export default {
         {
           name: 'halakha-url',
           path: '/halakha/:halakha_url',
-          component: resolve(__dirname, 'components/PageHalakha.vue'),
+          component: resolve(__dirname, 'pages/halakha/PageHalakha.vue'),
           props: true
         },
         {
@@ -148,7 +149,7 @@ export default {
         {
           path: '/hazanout/:hazanout_url',
           name: 'hazanout-url',
-          component: resolve(__dirname, 'components/PageHazanout.vue'),
+          component: resolve(__dirname, 'pages/hazanout/PageHazanout.vue'),
           props: true
         },
         {
@@ -159,7 +160,7 @@ export default {
         {
           path: '/cuisine/:cuisine_url',
           name: 'cuisine-url',
-          component: resolve(__dirname, 'components/PageCuisine.vue'),
+          component: resolve(__dirname, 'pages/cuisine/PageCuisine.vue'),
           props: true
         },
         {
@@ -170,7 +171,7 @@ export default {
         {
           path: '/articles/:articles_url',
           name: 'articles-url',
-          component: resolve(__dirname, 'components/PageArticles.vue'),
+          component: resolve(__dirname, 'pages/article/PageArticles.vue'),
           props: true
         },
         {

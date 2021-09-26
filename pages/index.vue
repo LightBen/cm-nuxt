@@ -125,7 +125,7 @@ export default {
   //     titleTemplate: '%s',
   //   }
   // },
-  async asyncData({app}) {
+  async asyncData({route, app}) {
     try {
       const data = await app.flamelink.content.get({
         schemaKey: 'general',

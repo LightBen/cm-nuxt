@@ -136,7 +136,7 @@
         mounted() {
             this.$root.$on('langChanged', this.getContent);
             this.setPageTitle();
-            this.getContent()
+            // this.getContent()
         },
         created() {
             // this.getContent()

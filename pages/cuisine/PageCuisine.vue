@@ -4,7 +4,7 @@
       <Loading v-if="loading"/>
     </transition>
     <slot name="page-content">
-      <div class="page-title-container">
+      <div class="page-title-container bharat is here">
         <figure v-if="pageBanner && pageBanner.length"
                 :style="{ 'background-image': 'url(' + pageBanner + ')' }"></figure>
         <div class="container">
@@ -36,8 +36,37 @@ import Loading from '@/components/Loading'
 import {mapMutations} from 'vuex'
 
 export default {
-  head(app) {
-    
+    async asyncData({route, app}) {
+        const appData = await app.flamelink.content.get({
+            schemaKey: 'cuisine',
+            entryId: route.params.cuisine_url
+        })
+        if (appData) {
+            // let ogJson = {
+            // pageTitle: pageContent.title,
+            // pageThumbnail: pageContent.thumbnail
+            // }
+            // this.$store.commit('setOgPageArticles', ogJson)
+            return {
+                pageTitle : appData.title,
+                pageAuthor : appData.author,
+                pageContent : appData.content,
+                pageBanner : appData.banner,
+                pageThumbnail : appData.thumbnail,
+                loading : false
+            }
+            
+      }
+        // .then((result) => {
+        //     console.log(result);
+        // }).catch ((err) => {
+        //     console.log(err)
+        // })
+        // console.log(appData, 'data')
+        // 
+    },
+  head(app) {    
+      /*
     const dataEntryId  = app['$options']['parent']['$route']['params']['cuisine_url'];
     console.log(dataEntryId);
     app.$flamelink.content.get({
@@ -46,31 +75,37 @@ export default {
     }).then((result) => {
       console.log(result);
     })
-    const title = 'Constantine Minhagim'
+    */
+    const title = (this.pageTitle) + '| Constantine Minhagim'
     return {
       title,
       meta: [
         {
+          hid:   'description',
           name: 'description',
-          content: 'Cuisine | Constantine Minhagim'
+          content: 'description here....'
         },
         {
+          hid: 'og:type',
           name: 'og:type',
           content: 'website'
         },
         {
+          hid: 'og:title', 
           name: 'og:title',
-          content: 'Constantine Minhagim'
+          content: title
           },
           {
+          hid: 'og:description',
           property: 'og:description',
           content: 'Halakha section.'
           },
           {
+            hid: 'og:image',
             property: 'og:image',
-            content: '/cm-logo-full.png'
+            content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' )
           }
-          ]
+        ]
           
       }
   },
@@ -123,13 +158,13 @@ export default {
     if (!this.dataEntryId) {
       this.dataEntryId = this.$route.params.cuisine_url
     }
-    await this.getContent();
-    this.$root.$on('langChanged', this.getContent);
-    let newTitle = this.cuisinePage.pageTitle + '| Constantine Minhagim'
-    console.log(this.cuisinePage.pageThumbnail)
-    document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
-    document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
-    document.querySelector('title').textContent = newTitle
+    // await this.getContent();
+    this.$root.$on('langChanged', this.getContent());
+    // let newTitle = this.cuisinePage.pageTitle + '| Constantine Minhagim'
+    // console.log(this.cuisinePage.pageThumbnail)
+    // document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
+    // document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
+    // document.querySelector('title').textContent = newTitle
         
   },
   methods: {
