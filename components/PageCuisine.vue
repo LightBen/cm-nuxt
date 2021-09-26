@@ -37,8 +37,8 @@ import {mapMutations} from 'vuex'
 
 export default {
   head(app) {
-    
-    const dataEntryId  = app['$options']['parent']['$route']['params']['cuisine_url'];
+
+    const dataEntryId = app['$options']['parent']['$route']['params']['cuisine_url'];
     console.log(dataEntryId);
     app.$flamelink.content.get({
       schemaKey: 'cuisine',
@@ -61,18 +61,18 @@ export default {
         {
           name: 'og:title',
           content: 'Constantine Minhagim'
-          },
-          {
+        },
+        {
           property: 'og:description',
-          content: 'Halakha section.'
-          },
-          {
-            property: 'og:image',
-            content: '/cm-logo-full.png'
-          }
-          ]
-          
-      }
+          content: 'Recettes de cuisine | מתכונים'
+        },
+        {
+          property: 'og:image',
+          content: '/cm-logo-full.png'
+        }
+      ]
+
+    }
   },
   name: 'PageCuisine',
   components: {
@@ -113,12 +113,12 @@ export default {
     }
   },
   computed: {
-    cuisinePage () {
+    cuisinePage() {
       return this.$store.state.ogPageArticles
     }
   },
   props: ['entryId'],
-  async mounted () {
+  async mounted() {
     this.dataEntryId = this.entryId;
     if (!this.dataEntryId) {
       this.dataEntryId = this.$route.params.cuisine_url
@@ -130,7 +130,7 @@ export default {
     document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
     document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
     document.querySelector('title').textContent = newTitle
-        
+
   },
   methods: {
     async getContent() {
@@ -140,26 +140,26 @@ export default {
           entryId: this.dataEntryId
         })
 
-      if (pageContent) {
-        let ogJson = {
-          pageTitle: pageContent.title,
-          pageThumbnail: pageContent.thumbnail
-        }
-        this.$store.commit('setOgPageArticles', ogJson)
+        if (pageContent) {
+          let ogJson = {
+            pageTitle: pageContent.title,
+            pageThumbnail: pageContent.thumbnail
+          }
+          this.$store.commit('setOgPageArticles', ogJson)
           this.pageTitle = pageContent.title;
           this.pageAuthor = pageContent.author;
           this.pageContent = pageContent.content;
           this.pageBanner = pageContent.banner;
           this.pageThumbnail = pageContent.thumbnail;
           this.loading = false;
-      }
+        }
       } catch (error) {
         console.error('Something went wrong while retrieving the entry. Details:', error);
       }
-        // .then(pageContent => {
-          
-        // })
-        // .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+      // .then(pageContent => {
+
+      // })
+      // .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
     }
   }
 };
