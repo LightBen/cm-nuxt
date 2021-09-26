@@ -22,34 +22,34 @@
 import Loading from '@/components/Loading'
 
 export default {
-  head () {
-      const title = 'Constantine Minhagim'
-      return {
+  head() {
+    const title = 'Constantine Minhagim'
+    return {
       title,
       meta: [
-          {
-              name: 'description',
-              content: 'Your description here....'
-          },
-          {
-              name: 'og:type',
-              content: 'website'
-          },
-          {
-              name: 'og:title',
-              content:  'Constantine Minhagim'
-          },
-          {
-              property: 'og:description',
-              content: 'Your description here...'
-          },
-          {
-              property: 'og:image',
-              content: '/cm-logo-full.png'
-          }
-          ]
-          
-      }
+        {
+          name: 'description',
+          content: 'Page du site'
+        },
+        {
+          name: 'og:type',
+          content: 'website'
+        },
+        {
+          name: 'og:title',
+          content: 'Page du site | Constantine Minhagim'
+        },
+        {
+          property: 'og:description',
+          content: 'Page du site'
+        },
+        {
+          property: 'og:image',
+          content: '/cm-logo-full.png'
+        }
+      ]
+
+    }
   },
   name: 'PageMix',
   components: {
@@ -73,7 +73,7 @@ export default {
     }
   },
   computed: {
-    ogPagemix () {
+    ogPagemix() {
       return this.$store.state.ogPagemix
     }
   },
@@ -86,37 +86,37 @@ export default {
 
   },
   methods: {
-    async loadData (app) {
-        try {
-          const pageContent = await this.$flamelinkApp.content.get({
-            schemaKey: 'pages',
-            entryId: this.$route.meta.entryId,
-            // entryId: 'EJPLGthI0WMQ0tlrqPsA', // example: about page entry ID
-            // populate: true
-          })
-          if (pageContent) {
-            let ogJson = {
-                pageTitle: pageContent.title,
-                // pageThumbnail: pageContent.thumbnail
-            }
-            // console.log(pageContent)
-            this.$store.commit('setogPagemix', ogJson)
-            this.pageTitle =  pageContent.title
-            this.pageContent = pageContent.content
-            this.dataEntryId = this.$route.meta.entryId
-            this.loading = false
+    async loadData(app) {
+      try {
+        const pageContent = await this.$flamelinkApp.content.get({
+          schemaKey: 'pages',
+          entryId: this.$route.meta.entryId,
+          // entryId: 'EJPLGthI0WMQ0tlrqPsA', // example: about page entry ID
+          // populate: true
+        })
+        if (pageContent) {
+          let ogJson = {
+            pageTitle: pageContent.title,
+            // pageThumbnail: pageContent.thumbnail
           }
-        } catch (error) {
-          console.error('Something went wrong while retrieving the entry. Details:', error);
-          this.error = true;
-          this.loading = false;
+          // console.log(pageContent)
+          this.$store.commit('setogPagemix', ogJson)
+          this.pageTitle = pageContent.title
+          this.pageContent = pageContent.content
+          this.dataEntryId = this.$route.meta.entryId
+          this.loading = false
         }
-        // .then((data) =>{
-        
-        // })
-        // .catch((err) =>{
-          
-        // })
+      } catch (error) {
+        console.error('Something went wrong while retrieving the entry. Details:', error);
+        this.error = true;
+        this.loading = false;
+      }
+      // .then((data) =>{
+
+      // })
+      // .catch((err) =>{
+
+      // })
     }
   }
 }
