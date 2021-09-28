@@ -1,4 +1,5 @@
 <template>
+<client-only>
   <div id="page-cuisine" class="page-page">
     <transition name="fade">
       <Loading v-if="loading"/>
@@ -29,11 +30,11 @@
     </slot>
     <!-- {{ this.cuisinePage }} ----- -->
   </div>
+  </client-only>
 </template>
 
 <script>
 import Loading from '@/components/Loading'
-import {mapMutations} from 'vuex'
 
 export default {
     async asyncData({route, app}) {
@@ -42,11 +43,6 @@ export default {
             entryId: route.params.cuisine_url
         })
         if (appData) {
-            // let ogJson = {
-            // pageTitle: pageContent.title,
-            // pageThumbnail: pageContent.thumbnail
-            // }
-            // this.$store.commit('setOgPageArticles', ogJson)
             return {
                 pageTitle : appData.title,
                 pageAuthor : appData.author,
@@ -57,56 +53,38 @@ export default {
             }
             
       }
-        // .then((result) => {
-        //     console.log(result);
-        // }).catch ((err) => {
-        //     console.log(err)
-        // })
-        // console.log(appData, 'data')
-        // 
     },
-  head(app) {    
-      /*
-    const dataEntryId  = app['$options']['parent']['$route']['params']['cuisine_url'];
-    console.log(dataEntryId);
-    app.$flamelink.content.get({
-      schemaKey: 'cuisine',
-      entryId: dataEntryId
-    }).then((result) => {
-      console.log(result);
-    })
-    */
-    const title = (this.pageTitle) + '| Constantine Minhagim'
-    return {
-      title,
-      meta: [
-        {
-          hid:   'description',
-          name: 'description',
-          content: 'description here....'
-        },
-        {
-          hid: 'og:type',
-          name: 'og:type',
-          content: 'website'
-        },
-        {
-          hid: 'og:title', 
-          name: 'og:title',
-          content: title
+    head() { 
+      const title = (this.pageTitle) + '| Constantine Minhagim'
+      return {
+        title,
+        meta: [{
+            hid:   'description',
+            name: 'description',
+            content: 'Cuisine | Constantine Minhagim'
           },
           {
-          hid: 'og:description',
-          property: 'og:description',
-          content: 'Halakha section.'
+            hid: 'og:type',
+            name: 'og:type',
+            content: 'website'
           },
           {
-            hid: 'og:image',
-            property: 'og:image',
-            content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' )
+            hid: 'og:title', 
+            name: 'og:title',
+            content: title
+          },
+          {
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Recettes de cuisine | מתכונים'
+          },
+          {
+              hid: 'og:image',
+              property: 'og:image',
+              content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' )
           }
-        ]
-          
+          ]
+            
       }
   },
   name: 'PageCuisine',
@@ -160,11 +138,8 @@ export default {
     }
     // await this.getContent();
     this.$root.$on('langChanged', this.getContent());
-    // let newTitle = this.cuisinePage.pageTitle + '| Constantine Minhagim'
-    // console.log(this.cuisinePage.pageThumbnail)
-    // document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
-    // document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
-    // document.querySelector('title').textContent = newTitle
+    let newTitle = this.pageTitle + ' | Constantine Minhagim'
+    document.querySelector('title').textContent = newTitle
         
   },
   methods: {

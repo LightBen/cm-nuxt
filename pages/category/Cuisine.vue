@@ -76,22 +76,27 @@ export default {
       title,
       meta: [
         {
+          hid: 'description',
           name: 'description',
           content: 'Recettes de cuisine | מתכונים'
         },
         {
+          hid: 'og:type',
           property: 'og:type',
           content: 'website'
         },
         {
+          hid: 'og:title',
           property: 'og:title',
           content: title
         },
         {
+          hid: 'og:description',
           property: 'og:description',
           content: 'Recettes de cuisine | מתכונים'
         },
         {
+          hid: 'og:image',
           property: 'og:image',
           content: '/cm-logo-full.png'
         }]

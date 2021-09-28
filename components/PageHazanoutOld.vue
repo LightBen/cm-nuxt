@@ -53,7 +53,7 @@ export default {
 
     }
   },
-  name: 'PageHazanout',
+  name: 'PageHazanoutOld',
   components: {
     Loading
   },

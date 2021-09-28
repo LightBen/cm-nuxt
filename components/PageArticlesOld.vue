@@ -60,7 +60,7 @@ export default {
 
     }
   },
-  name: 'PageArticles',
+  name: 'PageArticlesOld',
   components: {
     Loading
   },

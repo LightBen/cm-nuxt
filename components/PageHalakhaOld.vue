@@ -53,7 +53,7 @@ export default {
 
     }
   },
-  name: 'PageHalakha',
+  name: 'PageHalakhaOld',
   components: {
     Loading
   },

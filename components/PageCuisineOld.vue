@@ -74,7 +74,7 @@ export default {
 
     }
   },
-  name: 'PageCuisine',
+  name: 'PageCuisineOld',
   components: {
     Loading
   },
@@ -123,13 +123,13 @@ export default {
     if (!this.dataEntryId) {
       this.dataEntryId = this.$route.params.cuisine_url
     }
-    await this.getContent();
+    // await this.getContent();
     this.$root.$on('langChanged', this.getContent);
-    let newTitle = this.cuisinePage.pageTitle + '| Constantine Minhagim'
-    console.log(this.cuisinePage.pageThumbnail)
-    document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
-    document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
-    document.querySelector('title').textContent = newTitle
+    // let newTitle = this.cuisinePage.pageTitle + '| Constantine Minhagim'
+    // console.log(this.cuisinePage.pageThumbnail)
+    // document.querySelector('meta[name="og:title"]').setAttribute("content", newTitle)
+    // document.querySelector('meta[property="og:image"]').setAttribute("content", this.cuisinePage.pageThumbnail)
+    // document.querySelector('title').textContent = newTitle
 
   },
   methods: {
@@ -145,7 +145,7 @@ export default {
             pageTitle: pageContent.title,
             pageThumbnail: pageContent.thumbnail
           }
-          this.$store.commit('setOgPageArticles', ogJson)
+          this.$store.commit('setCuisinePage', ogJson)
           this.pageTitle = pageContent.title;
           this.pageAuthor = pageContent.author;
           this.pageContent = pageContent.content;
