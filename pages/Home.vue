@@ -118,9 +118,9 @@ export default {
           },
           {
           name: 'og:image',
-          content: '/cm-logo-full.png'
+          content: '/cm-og-default.jpg'
           }]
-        
+
     }
   },
   name: 'home',

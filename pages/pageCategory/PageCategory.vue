@@ -53,10 +53,10 @@ export default {
             },
             {
                 property: 'og:image',
-                content: '/cm-logo-full.png'
+                content: '/cm-og-default.jpg'
             }
             ]
-            
+
         }
     },
     name: 'PageCategory',
