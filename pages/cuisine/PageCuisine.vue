@@ -55,7 +55,7 @@ export default {
       }
     },
     head() { 
-      const title = (this.pageTitle) + '| Constantine Minhagim'
+      const title = (this.pageTitle) + ' | Constantine Minhagim'
       return {
         title,
         meta: [{
@@ -125,9 +125,19 @@ export default {
       titleVal: null
     }
   },
+  watch: {
+    locale (newval, oldVal) {
+      if (newval !== oldVal) {
+        this.getContent()
+      }
+    }
+  },
   computed: {
     cuisinePage () {
       return this.$store.state.ogPageArticles
+    },
+    locale () {
+      return this.$store.state.locale
     }
   },
   props: ['entryId'],
@@ -138,8 +148,6 @@ export default {
     }
     // await this.getContent();
     this.$root.$on('langChanged', this.getContent());
-    let newTitle = this.pageTitle + ' | Constantine Minhagim'
-    document.querySelector('title').textContent = newTitle
         
   },
   methods: {

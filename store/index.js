@@ -4,7 +4,8 @@ export const state = () => ({
     ogPageArticles: null,
     ogPageHalakha: null,
     ogPageHazanout: null,
-    ogPagemix: null
+    ogPagemix: null,
+    locale: null
   })
   
   // contains your mutations
@@ -23,6 +24,9 @@ export const state = () => ({
     },
     setogPagemix(state, value) {
       state.ogPagemix =value
+    },
+    setLocale (state, value) {
+      state.locale = value
     }
 
   }
@@ -43,6 +47,9 @@ export const state = () => ({
     },
     setogPagemix({state, commit}) {
       commit('setogPagemix', ogPagemix)
+    },
+    setLocale({state, commit}) {
+      commit('setLocale', locale)
     }
   }
   // your root getters
@@ -61,5 +68,8 @@ export const state = () => ({
     },
     ogPagemix (state) {
       return state.ogPagemix
+    },
+    locale (state) {
+      return state.locale
     }
   }

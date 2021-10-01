@@ -55,22 +55,27 @@ export default {
       title,
       meta: [
           {
-          name: 'description',
-          content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
+            hid:  'description',   
+            name: 'description',
+            content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
           },
           {
-          name: 'og:type',
-          content: 'website'
+            hid: 'og:type',
+            name: 'og:type',
+            content: 'website'
           },
           {
-          name: 'og:title',
-          content:  'Constantine Minhagim'
+            hid: 'og:title',
+            name: 'og:title',
+            content:  'Constantine Minhagim'
           },
           {
-          property: 'og:description',
-          content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
+            hid: 'og:description',
+            property: 'og:description',
+            content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
           },
           {
+            hid: 'og:image',
             property: 'og:image',
             content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' )
           }
@@ -98,9 +103,19 @@ export default {
         }
     },
     props: ['entryId'],
+    watch: {
+        locale (newval, oldVal) {
+            if (newval !== oldVal) {
+            this.getContent()
+            }
+        }
+    },
     computed: {
-    ogPageArticles () {
-        return this.$store.state.ogPageArticles
+        ogPageArticles () {
+            return this.$store.state.ogPageArticles
+        },
+        locale () {
+            return this.$store.state.locale
         }
     },
     async mounted() {

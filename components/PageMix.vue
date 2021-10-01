@@ -75,6 +75,16 @@ export default {
   computed: {
     ogPagemix() {
       return this.$store.state.ogPagemix
+    },
+    locale () {
+      return this.$store.state.locale
+    }
+  },
+  watch: {
+    locale (newval, oldVal) {
+      if (newval !== oldVal) {
+        this.loadData()
+      }
     }
   },
   async mounted() {

@@ -112,6 +112,18 @@ export default {
       grid: true
     }
   },
+  watch: {
+    locale (newval, oldVal) {
+      if (newval !== oldVal) {
+        this.getContent()
+      }
+    }
+  },
+  computed: {
+    locale () {
+      return this.$store.state.locale
+    }
+  },
   mounted() {
     this.$root.$on('langChanged', this.getContent);
     this.setPageTitle();

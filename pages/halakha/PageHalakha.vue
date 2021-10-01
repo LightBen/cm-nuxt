@@ -92,8 +92,18 @@ export default {
     },
     props: ['entryId'],
     computed: {
-    ogPageHalakha () {
-        return this.$store.state.ogPageHalakha
+        ogPageHalakha () {
+            return this.$store.state.ogPageHalakha
+        },
+        locale () {
+            return this.$store.state.locale
+        }
+    },
+    watch: {
+        locale (newval, oldVal) {
+            if (newval !== oldVal) {
+                this.getContent()
+            }
         }
     },
     async mounted() {

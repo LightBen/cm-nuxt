@@ -82,12 +82,12 @@ export default {
         },
         {
           hid: 'og:type',
-          property: 'og:type',
+          name: 'og:type',
           content: 'website'
         },
         {
           hid: 'og:title',
-          property: 'og:title',
+          name: 'og:title',
           content: title
         },
         {
@@ -121,9 +121,20 @@ export default {
       grid: true
     }
   },
+  watch: {
+    locale (newval, oldVal) {
+      if (newval !== oldVal) {
+        this.getContent()
+      }
+    }
+  },
+  computed: {
+    locale () {
+      return this.$store.state.locale
+    }
+  },
   mounted() {
-    console.log(this)
-    this.$root.$on('langChanged', this.getContent);
+    // this.$root.$on('langChanged', this.getContent());
     this.setPageTitle();
     this.getContent()
 

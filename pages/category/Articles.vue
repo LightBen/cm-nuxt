@@ -95,22 +95,27 @@ export default {
       title,
       meta: [
         {
+          hid: 'description',
           name: 'description',
           content: 'Articles | מאמרים'
         },
         {
+          hid: 'og:type',
           name: 'og:type',
           content: 'website'
         },
         {
+          hid: 'og:title',
           name: 'og:title',
           content: title
         },
         {
+          hid: 'og:description',
           property: 'og:description',
           content: 'Articles | מאמרים'
         },
         {
+          hid: 'og:image',
           property: 'og:image',
           content: '/cm-og-default.jpg'
         }]
@@ -136,10 +141,22 @@ export default {
       entries: []
     }
   },
+  watch: {
+    locale (newval, oldVal) {
+      if (newval !== oldVal) {
+        this.getContent()
+      }
+    }
+  },
+  computed: {
+    locale () {
+      return this.$store.state.locale
+    }
+  },
   mounted() {
     this.$root.$on('langChanged', this.getContent);
     this.setPageTitle();
-    // this.getContent()
+    this.getContent()
   },
   created() {
     // this.getContent()

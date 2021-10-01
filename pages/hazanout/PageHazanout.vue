@@ -90,9 +90,19 @@ export default {
         }
     },
     props: ['entryId'],
+    watch: {
+        locale (newval, oldVal) {
+            if (newval !== oldVal) {
+                this.getContent()
+            }
+        }
+    },
     computed: {
-    ogPageHazanout () {
-        return this.$store.state.ogPageHazanout
+        ogPageHazanout () {
+            return this.$store.state.ogPageHazanout
+        },
+        locale () {
+            return this.$store.state.locale
         }
     },
     async mounted() {
