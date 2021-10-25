@@ -1,6 +1,7 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
+  ssr: true,
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -14,21 +15,25 @@ export default {
         content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
       },
       {
+        hid: 'og:type',
+        name: 'og:type',
+        content: 'website'
+      },
+      {
         hid: 'og:title',
         name: 'og:title',
         content: 'Constantine Minhagim',
       },
       {
-        hid: 'og:image',
-        property: 'og:image',
-        content: '/cm-og-default.jpg',
-      },
-      {
         hid: 'og:description',
-        property: 'og:description',
+        name: 'og:description',
         content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
       },
-    ],
+      {
+        hid: 'og:image',
+        name: 'og:image',
+        content: '/cm-og-default.jpg',
+      }],
     link: [
       {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
     ]

@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <client-only>
       <div id="cuisine" class="page-category" :class="[ (this.grid) ? 'grid' : 'list' ]">
         <transition name="fade">
@@ -73,7 +72,6 @@ export default {
   head() {
     const title = 'Cuisine | Constantine Minhagim'
     return {
-      title,
       meta: [
         {
           hid: 'description',
@@ -92,12 +90,12 @@ export default {
         },
         {
           hid: 'og:description',
-          property: 'og:description',
+          name: 'og:description',
           content: 'Recettes de cuisine | מתכונים'
         },
         {
           hid: 'og:image',
-          property: 'og:image',
+          name: 'og:image',
           content: '/cm-og-default.jpg'
         }]
 

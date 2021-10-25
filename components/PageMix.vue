@@ -28,6 +28,7 @@ export default {
       title,
       meta: [
         {
+          hid: 'description',
           name: 'description',
           content: 'Page du site'
         },
@@ -40,11 +41,11 @@ export default {
           content: 'Page du site | Constantine Minhagim'
         },
         {
-          property: 'og:description',
+          name: 'og:description',
           content: 'Page du site'
         },
         {
-          property: 'og:image',
+          name: 'og:image',
           content: '/cm-og-default.jpg'
         }
       ]

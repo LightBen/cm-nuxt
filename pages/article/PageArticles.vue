@@ -50,9 +50,8 @@ export default {
         }
     },
     head () {
-    const title = (this.pageTitle) + ' | Constantine Minhagim'
+    const title = this.pageTitle + ' | Constantine Minhagim'
       return {
-      title,
       meta: [
           {
             hid:  'description',   
@@ -67,17 +66,17 @@ export default {
           {
             hid: 'og:title',
             name: 'og:title',
-            content:  'Constantine Minhagim'
+            content:  title
           },
           {
             hid: 'og:description',
-            property: 'og:description',
+            name: 'og:description',
             content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
           },
           {
             hid: 'og:image',
-            property: 'og:image',
-            content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' )
+            name: 'og:image',
+            content: this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png'
           }
           ]
           

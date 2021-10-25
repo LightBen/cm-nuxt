@@ -92,7 +92,6 @@ export default {
   head() {
     const title = 'Articles | Constantine Minhagim'
     return {
-      title,
       meta: [
         {
           hid: 'description',
@@ -111,12 +110,12 @@ export default {
         },
         {
           hid: 'og:description',
-          property: 'og:description',
+          name: 'og:description',
           content: 'Articles | מאמרים'
         },
         {
           hid: 'og:image',
-          property: 'og:image',
+          name: 'og:image',
           content: '/cm-og-default.jpg'
         }]
 

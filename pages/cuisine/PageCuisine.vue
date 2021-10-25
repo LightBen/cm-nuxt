@@ -1,36 +1,38 @@
 <template>
-<client-only>
-  <div id="page-cuisine" class="page-page">
-    <transition name="fade">
-      <Loading v-if="loading"/>
-    </transition>
-    <slot name="page-content">
-      <div class="page-title-container bharat is here">
-        <figure v-if="pageBanner && pageBanner.length"
-                :style="{ 'background-image': 'url(' + pageBanner + ')' }"></figure>
-        <div class="container">
-          <h1 id="page-title">
-            <span class="lang" v-html="pageTitle"></span>
-          </h1>
-        </div>
-      </div>
-      <div class="container">
-        <div id="page-details">
-          <div id="page-author">
-            <span class="lang-fr">Auteur : </span>
-            <span class="lang-he">המחבר: </span>
-            <span class="author-content" v-html="pageAuthor"></span>
+  <div>
+    <client-only>
+      <div id="page-cuisine" class="page-page">
+        <transition name="fade">
+          <Loading v-if="loading"/>
+        </transition>
+        <slot name="page-content">
+          <div class="page-title-container bharat is here">
+            <figure v-if="pageBanner && pageBanner.length"
+                    :style="{ 'background-image': 'url(' + pageBanner + ')' }"></figure>
+            <div class="container">
+              <h1 id="page-title">
+                <span class="lang" v-html="pageTitle"></span>
+              </h1>
+            </div>
           </div>
-        </div>
-        <div class="page-illustration" v-if="pageBanner && pageBanner.length">
-          <img :src="pageBanner" alt="Illustration" class=""/>
-        </div>
-        <div id="page-content" v-html="pageContent"></div>
+          <div class="container">
+            <div id="page-details">
+              <div id="page-author">
+                <span class="lang-fr">Auteur : </span>
+                <span class="lang-he">המחבר: </span>
+                <span class="author-content" v-html="pageAuthor"></span>
+              </div>
+            </div>
+            <div class="page-illustration" v-if="pageBanner && pageBanner.length">
+              <img :src="pageBanner" alt="Illustration" class=""/>
+            </div>
+            <div id="page-content" v-html="pageContent"></div>
+          </div>
+        </slot>
+        <!-- {{ this.cuisinePage }} ----- -->
       </div>
-    </slot>
-    <!-- {{ this.cuisinePage }} ----- -->
+    </client-only>  
   </div>
-  </client-only>
 </template>
 
 <script>
@@ -50,18 +52,16 @@ export default {
                 pageBanner : appData.banner,
                 pageThumbnail : appData.thumbnail,
                 loading : false
-            }
-            
+            }    
       }
     },
     head() { 
-      const title = (this.pageTitle) + ' | Constantine Minhagim'
+      const title = this.pageTitle + ' | Constantine Minhagim'
       return {
-        title,
         meta: [{
             hid:   'description',
             name: 'description',
-            content: 'Cuisine | Constantine Minhagim'
+            content: 'Recettes de cuisine | מתכונים'
           },
           {
             hid: 'og:type',
@@ -75,17 +75,20 @@ export default {
           },
           {
             hid: 'og:description',
-            property: 'og:description',
+            name: 'og:description',
             content: 'Recettes de cuisine | מתכונים'
           },
           {
-              hid: 'og:image',
-              property: 'og:image',
-              content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' )
-          }
-          ]
-            
+            hid: 'og:image',
+            name: 'og:image',
+            content: this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png'
+          }]
       }
+  },
+  metaInfo() {
+    return {
+      title: this.pageTitle,
+    }
   },
   name: 'PageCuisine',
   components: {

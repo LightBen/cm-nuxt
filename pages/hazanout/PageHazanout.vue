@@ -45,26 +45,30 @@ export default {
     head () {
         const title = (this.pageTitle) + ' | Constantine Minhagim'
         return {
-        title,
         meta: [
             {
+                hid:   'description',
                 name: 'description',
                 content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !).מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
             },
             {
+                hid: 'og:type',
                 name: 'og:type',
                 content: 'website'
             },
             {
+                hid: 'og:title',
                 name: 'og:title',
                 content:  title
             },
             {
-                property: 'og:description',
+                hid: 'og:description',
+                name: 'og:description',
                 content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !).מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
             },
             {
-                property: 'og:image',
+                hid: 'og:image',
+                name: 'og:image',
                 content: (this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png' ) 
             }
             ]

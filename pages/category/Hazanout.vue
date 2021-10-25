@@ -70,28 +70,32 @@ export default {
   head() {
     const title = 'Hazanout | Constantine Minhagim'
     return {
-      title,
       meta: [
         {
+          hid:   'description',
           name: 'description',
           content: 'Hazanout | חזנות'
         },
         {
-          property: 'og:type',
+          hid: 'og:type',
+          name: 'og:type',
           content: 'website'
         },
         {
-          property: 'og:title',
+          hid: 'og:title',
+          name: 'og:title',
           content: title
         },
         {
-          property: 'og:description',
+          hid: 'og:description',
+          name: 'og:description',
           content: 'Hazanout | חזנות'
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: '/cm-og-default.jpg'
         }]
-      // {
-      //   property: 'og:image',
-      //   content: '../../assets/cm-logo-full.png'
-      // }
     }
   },
   name: "Hazanout",

@@ -33,26 +33,30 @@ export default {
     head () {
         const title = 'Constantine Minhagim'
         return {
-        title,
         meta: [
             {
+                hid:   'description',
                 name: 'description',
                 content: 'Your description here....'
             },
             {
+                hid: 'og:type',
                 name: 'og:type',
                 content: 'website'
             },
             {
+                hid: 'og:title',
                 name: 'og:title',
                 content:  'Constantine Minhagim'
             },
             {
-                property: 'og:description',
+                hid: 'og:description',
+                name: 'og:description',
                 content: 'Your description here...'
             },
             {
-                property: 'og:image',
+                hid: 'og:image',
+                name: 'og:image',
                 content: '/cm-og-default.jpg'
             }
             ]
