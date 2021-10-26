@@ -25,11 +25,6 @@ export default {
     components: {
         Loading
     },
-    metaInfo() {
-        return {
-            title: this.pageTitle,
-        }
-    },
     data() {
         return {
             dataEntryId: '',

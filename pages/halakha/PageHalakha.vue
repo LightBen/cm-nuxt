@@ -38,7 +38,7 @@ export default {
                     pageThumbnail : appData.thumbnail,
                     loading : false
                 }
-            }    
+            }
         } catch (error) {
             console.error('Something went wrong while retrieving the entry. Details:', error);
         }
@@ -47,22 +47,22 @@ export default {
         const title = this.pageTitle + ' | Constantine Minhagim'
         return {
         meta: [
-            {   
+            {
                 hid:   'description',
                 name: 'description',
                 content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !).מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
             },
-            {   
+            {
                 hid: 'og:type',
                 name: 'og:type',
                 content: 'website'
             },
-            {   
+            {
                 hid: 'og:title',
                 name: 'og:title',
                 content:  this.pageTitle + ' | Constantine Minhagim'
             },
-            {   
+            {
                 hid: 'og:description',
                 name: 'og:description',
                 content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !).מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
@@ -70,20 +70,15 @@ export default {
             {
                 hid: 'og:image',
                 name: 'og:image',
-                content: this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png'
+                content: this.pageThumbnail ? this.pageThumbnail : '/cm-og-default.jpg'
             }
             ]
-            
+
         }
     },
     name: 'PageHalakha',
     components: {
         Loading
-    },
-    metaInfo() {
-        return {
-            title: this.pageTitle,
-        }
     },
     data() {
         return {
@@ -136,11 +131,11 @@ export default {
                     this.pageContent = pageContent.content;
                     this.pageBanner = pageContent.banner;
                     this.loading = false;
-                }  
+                }
             } catch (error) {
                 console.error('Something went wrong while retrieving the entry. Details:', error);
             }
-            
+
             // })
             // .catch(error => );
         }

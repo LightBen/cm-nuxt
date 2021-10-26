@@ -1,12 +1,12 @@
 <template>
     <div id="footerStatic">
-        <div class="container" id="footerStaticContent">&copy; <a href="https://lightwolf-studios.web.app">LightWolf Studios</a></div>
+        <div class="container" id="footerStaticContent">&copy; <a href="https://lightwolf-studios.com">LightWolf Studios</a></div>
     </div>
 </template>
 
 <style lang="scss" scoped>
     #footerStatic {
-        
+
     }
 </style>
 

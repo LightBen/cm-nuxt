@@ -96,43 +96,39 @@
 
 <script>
 export default {
-  head () {
+  head() {
     const title = 'home | Constantine Minhagim'
     return {
       meta: [
-          {
+        {
+          hid: 'description',
           name: 'description',
-          content: 'home page of Constantine Minhagim.'
-          },
-          {
+          content: 'Homepage: Constantine Minhagim'
+        },
+        {
+          hid: 'og:type',
           name: 'og:type',
           content: 'website'
-          },
-          {
+        },
+        {
+          hid: 'og:title',
           name: 'og:title',
           content: title
-          },
-          {
+        },
+        {
+          hid: 'og:description',
           name: 'og:description',
           content: 'home page of Constantine Minhagim.'
-          },
-          {
+        },
+        {
+          hid: 'og:image',
           name: 'og:image',
           content: '/cm-og-default.jpg'
-          }]
+        }]
 
     }
   },
   name: 'home',
-  metaInfo() {
-    return {
-      title: this.pageTitle,
-      titleTemplate: '%s',
-      meta: [
-        {property: 'og:title', content: this.pageTitle}
-      ]
-    }
-  },
   // head() {
   //   return {
   //     title: this.pageTitle,
@@ -162,14 +158,14 @@ export default {
     // this.getContent();
   },
   watch: {
-    locale (newval, oldVal) {
+    locale(newval, oldVal) {
       if (newval !== oldVal) {
         this.getContent()
       }
     }
   },
   computed: {
-    locale () {
+    locale() {
       return this.$store.state.locale
     }
   },

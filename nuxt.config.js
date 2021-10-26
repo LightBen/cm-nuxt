@@ -2,6 +2,7 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
   ssr: true,
+  publicRuntimeConfig: { baseURL: process.env.NUXT_BASE_URL },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -35,7 +36,7 @@ export default {
         content: '/cm-og-default.jpg',
       }],
     link: [
-      {rel: 'icon', type: 'image/x-icon', href: '/favicon.ico'}
+      {rel: 'icon', type: 'image/png', href: '/favicon.png'}
     ]
   },
 
@@ -113,6 +114,9 @@ export default {
       appleMobileWebAppCapable: 'yes',
       appleMobileWebAppStatusBarStyle: 'black',
       workboxPluginMode: 'InjectManifest',
+      icon: {
+        source: '~/static/favicon.png'
+      }
     },
     // workbox: {
     //   importScripts: [

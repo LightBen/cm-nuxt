@@ -158,7 +158,19 @@ export default {
     Icons
   },
   metaInfo: {
-    titleTemplate: '%s | Constantine Minhagim'
+    titleTemplate: '%s | Constantine Minhagim (Default MetaInfo)'
+  },
+  head() {
+    return {
+      title: 'Constantine Minhagim (Default)',
+      meta: [
+        {
+          hid: 'og:image',
+          property: 'og:image',
+          content: '/cm-og-default.jpg'
+        }
+      ]
+    }
   },
   // head() {
   //   return {

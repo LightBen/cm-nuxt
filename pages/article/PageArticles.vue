@@ -44,7 +44,7 @@ export default {
                     pageThumbnail : appData.thumbnail,
                     loading : false
                 }
-            }    
+            }
         } catch (error) {
             console.error('Something went wrong while retrieving the entry. Details:', error);
         }
@@ -54,7 +54,7 @@ export default {
       return {
       meta: [
           {
-            hid:  'description',   
+            hid:  'description',
             name: 'description',
             content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!)'
           },
@@ -76,20 +76,15 @@ export default {
           {
             hid: 'og:image',
             name: 'og:image',
-            content: this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png'
+            content: this.pageThumbnail ? this.pageThumbnail : '/cm-og-default.jpg'
           }
           ]
-          
+
       }
   },
     name: 'PageArticles',
     components: {
         Loading
-    },
-    metaInfo() {
-        return {
-            title: this.pageTitle,
-        }
     },
     data() {
         return {

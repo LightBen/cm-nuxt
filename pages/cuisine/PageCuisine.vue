@@ -31,7 +31,7 @@
         </slot>
         <!-- {{ this.cuisinePage }} ----- -->
       </div>
-    </client-only>  
+    </client-only>
   </div>
 </template>
 
@@ -39,66 +39,56 @@
 import Loading from '@/components/Loading'
 
 export default {
-    async asyncData({route, app}) {
-        const appData = await app.flamelink.content.get({
-            schemaKey: 'cuisine',
-            entryId: route.params.cuisine_url
-        })
-        if (appData) {
-            return {
-                pageTitle : appData.title,
-                pageAuthor : appData.author,
-                pageContent : appData.content,
-                pageBanner : appData.banner,
-                pageThumbnail : appData.thumbnail,
-                loading : false
-            }    
-      }
-    },
-    head() { 
-      const title = this.pageTitle + ' | Constantine Minhagim'
+  async asyncData({route, app}) {
+    const appData = await app.flamelink.content.get({
+      schemaKey: 'cuisine',
+      entryId: route.params.cuisine_url
+    })
+    if (appData) {
       return {
-        meta: [{
-            hid:   'description',
-            name: 'description',
-            content: 'Recettes de cuisine | מתכונים'
-          },
-          {
-            hid: 'og:type',
-            name: 'og:type',
-            content: 'website'
-          },
-          {
-            hid: 'og:title', 
-            name: 'og:title',
-            content: title
-          },
-          {
-            hid: 'og:description',
-            name: 'og:description',
-            content: 'Recettes de cuisine | מתכונים'
-          },
-          {
-            hid: 'og:image',
-            name: 'og:image',
-            content: this.pageThumbnail ? this.pageThumbnail : '/cm-logo-full.png'
-          }]
+        pageTitle: appData.title,
+        pageAuthor: appData.author,
+        pageContent: appData.content,
+        pageBanner: appData.banner,
+        pageThumbnail: appData.thumbnail,
+        loading: false
       }
+    }
   },
-  metaInfo() {
+  head() {
+    const title = this.pageTitle + ' | Constantine Minhagim'
     return {
-      title: this.pageTitle,
+      meta: [{
+        hid: 'description',
+        name: 'description',
+        content: 'Recettes de cuisine | מתכונים'
+      },
+        {
+          hid: 'og:type',
+          name: 'og:type',
+          content: 'website'
+        },
+        {
+          hid: 'og:title',
+          name: 'og:title',
+          content: title
+        },
+        {
+          hid: 'og:description',
+          name: 'og:description',
+          content: 'Recettes de cuisine | מתכונים'
+        },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.pageThumbnail ? this.pageThumbnail : '/cm-og-default.jpg'
+        }]
     }
   },
   name: 'PageCuisine',
   components: {
     Loading
   },
-  // metaInfo() {
-  //   return {
-  //     title: this.pageTitle,
-  //   }
-  // },
   // head() {
   //   return {
   //     title: this.pageTitle,
@@ -129,29 +119,29 @@ export default {
     }
   },
   watch: {
-    locale (newval, oldVal) {
+    locale(newval, oldVal) {
       if (newval !== oldVal) {
         this.getContent()
       }
     }
   },
   computed: {
-    cuisinePage () {
+    cuisinePage() {
       return this.$store.state.ogPageArticles
     },
-    locale () {
+    locale() {
       return this.$store.state.locale
     }
   },
   props: ['entryId'],
-  async mounted () {
+  async mounted() {
     this.dataEntryId = this.entryId;
     if (!this.dataEntryId) {
       this.dataEntryId = this.$route.params.cuisine_url
     }
     // await this.getContent();
     this.$root.$on('langChanged', this.getContent());
-        
+
   },
   methods: {
     async getContent() {
@@ -161,26 +151,26 @@ export default {
           entryId: this.dataEntryId
         })
 
-      if (pageContent) {
-        let ogJson = {
-          pageTitle: pageContent.title,
-          pageThumbnail: pageContent.thumbnail
-        }
-        this.$store.commit('setOgPageArticles', ogJson)
+        if (pageContent) {
+          let ogJson = {
+            pageTitle: pageContent.title,
+            pageThumbnail: pageContent.thumbnail
+          }
+          this.$store.commit('setOgPageArticles', ogJson)
           this.pageTitle = pageContent.title;
           this.pageAuthor = pageContent.author;
           this.pageContent = pageContent.content;
           this.pageBanner = pageContent.banner;
           this.pageThumbnail = pageContent.thumbnail;
           this.loading = false;
-      }
+        }
       } catch (error) {
         console.error('Something went wrong while retrieving the entry. Details:', error);
       }
-        // .then(pageContent => {
-          
-        // })
-        // .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
+      // .then(pageContent => {
+
+      // })
+      // .catch(error => console.error('Something went wrong while retrieving the entry. Details:', error));
     }
   }
 };

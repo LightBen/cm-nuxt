@@ -110,15 +110,6 @@
 <script>
 export default {
   name: 'home',
-  metaInfo() {
-    return {
-      title: this.pageTitle,
-      titleTemplate: '%s',
-      meta: [
-        {property: 'og:title', content: this.pageTitle}
-      ]
-    }
-  },
   // head() {
   //   return {
   //     title: "Constantine Minhagim",

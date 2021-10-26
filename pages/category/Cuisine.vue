@@ -105,11 +105,6 @@ export default {
   components: {
     Loading
   },
-  metaInfo() {
-    return {
-      title: this.pageTitle,
-    }
-  },
   data() {
     return {
       elements: [],
@@ -120,14 +115,14 @@ export default {
     }
   },
   watch: {
-    locale (newval, oldVal) {
+    locale(newval, oldVal) {
       if (newval !== oldVal) {
         this.getContent()
       }
     }
   },
   computed: {
-    locale () {
+    locale() {
       return this.$store.state.locale
     }
   },

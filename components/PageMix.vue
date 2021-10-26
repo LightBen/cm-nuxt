@@ -33,20 +33,24 @@ export default {
           content: 'Page du site'
         },
         {
+          hid: 'og:type',
           name: 'og:type',
           content: 'website'
         },
         {
+          hid: 'og:title',
           name: 'og:title',
           content: 'Page du site | Constantine Minhagim'
         },
         {
+          hid: 'og:description',
           name: 'og:description',
           content: 'Page du site'
         },
         {
+          hid: 'og:image',
           name: 'og:image',
-          content: '/cm-og-default.jpg'
+          content: this.pageThumbnail ? this.pageThumbnail : '/cm-og-default.jpg'
         }
       ]
 
@@ -56,15 +60,11 @@ export default {
   components: {
     Loading
   },
-  metaInfo() {
-    return {
-      title: this.pageTitle,
-    }
-  },
   data() {
     return {
       pageTitle: this.pageTitle,
       pageContent: this.pageContent,
+      pageThumbnail: this.pageThumbnail,
       loading: true
     }
   },
@@ -108,12 +108,14 @@ export default {
         if (pageContent) {
           let ogJson = {
             pageTitle: pageContent.title,
-            // pageThumbnail: pageContent.thumbnail
+            pageThumbnail: pageContent.thumbnail
           }
           // console.log(pageContent)
           this.$store.commit('setogPagemix', ogJson)
           this.pageTitle = pageContent.title
           this.pageContent = pageContent.content
+          this.pageBanner = pageContent.banner
+          this.pageThumbnail = pageContent.thumbnail
           this.dataEntryId = this.$route.meta.entryId
           this.loading = false
         }

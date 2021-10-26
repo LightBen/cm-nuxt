@@ -78,11 +78,6 @@ export default {
   components: {
     Loading
   },
-  // metaInfo() {
-  //   return {
-  //     title: this.pageTitle,
-  //   }
-  // },
   // head() {
   //   return {
   //     title: this.pageTitle,
