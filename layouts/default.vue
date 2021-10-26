@@ -158,11 +158,12 @@ export default {
     Icons
   },
   metaInfo: {
-    titleTemplate: '%s | Constantine Minhagim (Default MetaInfo)'
+    title: 'Constantine Minhagim',
+    titleTemplate: '%s | Constantine Minhagim <> קונסטנטין מנהגים'
   },
   head() {
     return {
-      title: 'Constantine Minhagim (Default)',
+      title: 'Constantine Minhagim',
       meta: [
         {
           hid: 'og:image',

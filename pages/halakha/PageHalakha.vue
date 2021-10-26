@@ -22,7 +22,12 @@
 <script>
 import Loading from '@/components/Loading'
 export default {
-    async asyncData({route, app}) {
+  metaInfo() {
+    return {
+      title: 'Halakha | הלכה',
+    }
+  },
+  async asyncData({route, app}) {
         try {
             const appData = await app.flamelink.content.get({
                 schemaKey: 'minhag',

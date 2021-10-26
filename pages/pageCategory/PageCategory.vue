@@ -33,6 +33,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Page du site | דף באתר',
+    }
+  },
   head() {
     const title = 'Constantine Minhagim'
     return {

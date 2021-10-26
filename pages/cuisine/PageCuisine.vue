@@ -39,6 +39,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Cuisine | מתכונים',
+    }
+  },
   async asyncData({route, app}) {
     const appData = await app.flamelink.content.get({
       schemaKey: 'cuisine',

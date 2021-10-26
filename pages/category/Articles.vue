@@ -89,6 +89,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Articles | מאמרים',
+    }
+  },
   head() {
     const title = 'Articles | Constantine Minhagim'
     return {

@@ -96,6 +96,12 @@
 
 <script>
 export default {
+  metaInfo() {
+    return {
+      title: 'Constantine Minhagim | קונסטנטין מנהגים',
+      titleTemplate: null
+    }
+  },
   head() {
     const title = 'home | Constantine Minhagim'
     return {

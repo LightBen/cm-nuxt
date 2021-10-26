@@ -24,6 +24,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Hazanouth | חזנות',
+    }
+  },
   async asyncData({route, app}) {
     try {
       const appData = await app.flamelink.content.get({

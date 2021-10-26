@@ -110,12 +110,12 @@
 <script>
 export default {
   name: 'home',
-  // head() {
-  //   return {
-  //     title: "Constantine Minhagim",
-  //     titleTemplate: '%s',
-  //   }
-  // },
+  metaInfo() {
+    return {
+      title: 'Constantine Minhagim | קונסטנטין מנהגים',
+      titleTemplate: null
+    }
+  },
   async asyncData({route, app}) {
     try {
       const data = await app.flamelink.content.get({

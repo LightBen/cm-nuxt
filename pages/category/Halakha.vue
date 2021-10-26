@@ -67,6 +67,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Halakha | הלכה',
+    }
+  },
   head() {
     const title = 'Halakha | Constantine Minhagim'
     return {

@@ -4,6 +4,11 @@
 
 <script>
 export default {
+  metaInfo() {
+    return {
+      title: 'A propos | אודות',
+    }
+  },
   head () {
     const title = 'About' + ' | Constantine Minhagim'
     return {

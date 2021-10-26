@@ -1,11 +1,16 @@
 <template>
-        <page-mix :pageId="pageId"></page-mix>
+  <page-mix :pageId="pageId"></page-mix>
 </template>
 
 <script>
 
 export default {
-    head () {
+  metaInfo() {
+    return {
+      title: 'Contact | צור קשר',
+    }
+  },
+  head() {
     const title = 'Contact | Constantine Minhagim'
     return {
       title,
@@ -33,11 +38,11 @@ export default {
 
     }
   },
-    name: "Contact",
-    data() {
-    	return {
-    		pageId: "contact"
-    	}
+  name: "Contact",
+  data() {
+    return {
+      pageId: "contact"
     }
+  }
 };
 </script>

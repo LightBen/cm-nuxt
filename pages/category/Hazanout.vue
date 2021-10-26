@@ -67,6 +67,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Hazanouth | חזנות',
+    }
+  },
   head() {
     const title = 'Hazanout | Constantine Minhagim'
     return {

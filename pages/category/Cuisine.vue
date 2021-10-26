@@ -69,6 +69,11 @@
 import Loading from '@/components/Loading'
 
 export default {
+  metaInfo() {
+    return {
+      title: 'Cuisine | מתכונים',
+    }
+  },
   head() {
     const title = 'Cuisine | Constantine Minhagim'
     return {

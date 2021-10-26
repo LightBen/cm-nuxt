@@ -77,12 +77,12 @@ export default {
     ogPagemix() {
       return this.$store.state.ogPagemix
     },
-    locale () {
+    locale() {
       return this.$store.state.locale
     }
   },
   watch: {
-    locale (newval, oldVal) {
+    locale(newval, oldVal) {
       if (newval !== oldVal) {
         this.loadData()
       }
@@ -94,7 +94,6 @@ export default {
     document.querySelector('meta[name="og:title"]').setAttribute("content", this.ogPagemix.pageTitle)
     // document.querySelector('meta[property="og:image"]').setAttribute("content", this.ogPageHazanout.pageThumbnail)
     document.querySelector('title').textContent = this.ogPagemix.pageTitle
-
   },
   methods: {
     async loadData(app) {
