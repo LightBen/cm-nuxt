@@ -1,102 +1,104 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: "static",
   ssr: true,
   publicRuntimeConfig: { baseURL: process.env.NUXT_BASE_URL },
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Constantine Minhagim',
+    title: "Constantine Minhagim",
+    titleTemplate: "%s - Constantine Minhagim",
     meta: [
-      {charset: 'utf-8'},
-      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      { charset: "utf-8" },
+      { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
-        hid: 'description',
-        name: 'description',
-        content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
+        hid: "description",
+        name: "description",
+        content:
+          "Minhagim constantinois et sefarade d'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).",
       },
       {
-        hid: 'og:type',
-        name: 'og:type',
-        content: 'website'
+        hid: "og:type",
+        name: "og:type",
+        content: "website",
       },
       {
-        hid: 'og:title',
-        name: 'og:title',
-        content: 'Constantine Minhagim',
+        hid: "og:title",
+        name: "og:title",
+        content: "Constantine Minhagim",
       },
       {
-        hid: 'og:description',
-        name: 'og:description',
-        content: 'Minhagim constantinois et sefarade d\'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).'
+        hid: "og:description",
+        name: "og:description",
+        content:
+          "Minhagim constantinois et sefarade d'Afrique du Nord (Torah, Halakha, Hazanout, Cuisine !). מנהגי קונסטנטין וספרדי צפון אפריקה (תורה, הלכה, חזנות ומתכונים!).",
       },
       {
-        hid: 'og:image',
-        name: 'og:image',
-        content: '/cm-og-default.jpg',
-      }],
-    link: [
-      {rel: 'icon', type: 'image/png', href: '/favicon.png'}
-    ]
+        hid: "og:image",
+        name: "og:image",
+        // content: '/cm-og-default.jpg',
+        content: `${
+          process.env.NUXT_BASE_URL || "https://constantine-minhagim.com"
+        }/cm-og-default.jpg`,
+      },
+    ],
+    link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~assets/style/_variables.scss',
-    '~assets/style/bootstrap-snippets.scss',
-    '~assets/style/app.scss',
+    "~assets/style/_variables.scss",
+    "~assets/style/bootstrap-snippets.scss",
+    "~assets/style/app.scss",
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    {src: '~/plugins/main.js', mode: 'client'},
-    {src: '~/plugins/vue-npm-in-nuxt.js', ssr: false},
-    '@/plugins/flamelink',
-    '~/plugins/flamelink'
+    { src: "~/plugins/main.js", mode: "client" },
+    { src: "~/plugins/vue-npm-in-nuxt.js", ssr: false },
+    "@/plugins/flamelink",
+    "~/plugins/flamelink",
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    '@nuxtjs/dotenv'
-  ],
+  buildModules: ["@nuxtjs/dotenv"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules:
+  modules: [
+    "nuxt-i18n",
+    // https://go.nuxtjs.dev/axios
+    "@nuxtjs/axios",
+    // https://go.nuxtjs.dev/pwa
+    "@nuxtjs/pwa",
+    "@nuxtjs/style-resources",
     [
-      'nuxt-i18n',
-      // https://go.nuxtjs.dev/axios
-      '@nuxtjs/axios',
-      // https://go.nuxtjs.dev/pwa
-      '@nuxtjs/pwa',
-      '@nuxtjs/style-resources',
-      [
-        '@nuxtjs/firebase',
-        {
-          config: {
-            apiKey: process.env.NUXT_ENV_FLAMELINK_API_KEY,
-            authDomain: process.env.NUXT_ENV_FLAMELINK_AUTH_DOMAIN,
-            databaseURL: process.env.NUXT_ENV_FLAMELINK_DB_URL,
-            projectId: process.env.NUXT_ENV_FLAMELINK_PROJECT_ID,
-            storageBucket: process.env.NUXT_ENV_FLAMELINK_STORAGE_BUCKET,
-            messagingSenderId: process.env.NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID,
-            appId: process.env.NUXT_ENV_FLAMELINK_APP_ID,
-            measurementId: process.env.NUXT_ENV_FLAMELINK_MEASUREMENT_ID
+      "@nuxtjs/firebase",
+      {
+        config: {
+          apiKey: process.env.NUXT_ENV_FLAMELINK_API_KEY,
+          authDomain: process.env.NUXT_ENV_FLAMELINK_AUTH_DOMAIN,
+          databaseURL: process.env.NUXT_ENV_FLAMELINK_DB_URL,
+          projectId: process.env.NUXT_ENV_FLAMELINK_PROJECT_ID,
+          storageBucket: process.env.NUXT_ENV_FLAMELINK_STORAGE_BUCKET,
+          messagingSenderId: process.env.NUXT_ENV_FLAMELINK_MESSAGING_SENDER_ID,
+          appId: process.env.NUXT_ENV_FLAMELINK_APP_ID,
+          measurementId: process.env.NUXT_ENV_FLAMELINK_MEASUREMENT_ID,
+        },
+        services: {
+          auth: true, // Just as example. Can be any other service.
+          firestore: {
+            enablePersistence: true,
           },
-          services: {
-            auth: true, // Just as example. Can be any other service.
-            firestore: {
-              enablePersistence: true
-            },
-          }
-        }
-      ],
+        },
+      },
     ],
+  ],
 
   styleResources: {
-    scss: ['~/assets/scss/*.scss']
+    scss: ["~/assets/scss/*.scss"],
   },
 
   i18n: {},
@@ -107,16 +109,16 @@ export default {
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
     manifest: {
-      name: 'Constantine Minhagim',
-      display: 'standalone',
-      themeColor: '#1294f6',
-      msTileColor: '#1294f6',
-      appleMobileWebAppCapable: 'yes',
-      appleMobileWebAppStatusBarStyle: 'black',
-      workboxPluginMode: 'InjectManifest',
+      name: "Constantine Minhagim",
+      display: "standalone",
+      themeColor: "#1294f6",
+      msTileColor: "#1294f6",
+      appleMobileWebAppCapable: "yes",
+      appleMobileWebAppStatusBarStyle: "black",
+      workboxPluginMode: "InjectManifest",
       icon: {
-        source: '~/static/favicon.png'
-      }
+        source: "~/static/favicon.png",
+      },
     },
     // workbox: {
     //   importScripts: [
@@ -127,11 +129,11 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    postcss: false
+    postcss: false,
   },
 
   router: {
-    base: '/',
+    base: "/",
     extendRoutes(routes, resolve) {
       routes.push(
         // {
@@ -142,113 +144,113 @@ export default {
         {
           name: "Halakha",
           path: "/halakha",
-          component: resolve(__dirname, 'pages/category/Halakha.vue'),
+          component: resolve(__dirname, "pages/category/Halakha.vue"),
         },
         {
-          name: 'halakha-url',
-          path: '/halakha/:halakha_url',
-          component: resolve(__dirname, 'pages/halakha/PageHalakha.vue'),
-          props: true
+          name: "halakha-url",
+          path: "/halakha/:halakha_url",
+          component: resolve(__dirname, "pages/halakha/PageHalakha.vue"),
+          props: true,
         },
         {
           path: "/hazanout",
           name: "Hazanout",
-          component: resolve(__dirname, 'pages/category/Hazanout.vue'),
+          component: resolve(__dirname, "pages/category/Hazanout.vue"),
         },
         {
-          path: '/hazanout/:hazanout_url',
-          name: 'hazanout-url',
-          component: resolve(__dirname, 'pages/hazanout/PageHazanout.vue'),
-          props: true
+          path: "/hazanout/:hazanout_url",
+          name: "hazanout-url",
+          component: resolve(__dirname, "pages/hazanout/PageHazanout.vue"),
+          props: true,
         },
         {
           path: "/cuisine",
           name: "Cuisine",
-          component: resolve(__dirname, 'pages/category/Cuisine.vue'),
+          component: resolve(__dirname, "pages/category/Cuisine.vue"),
         },
         {
-          path: '/cuisine/:cuisine_url',
-          name: 'cuisine-url',
-          component: resolve(__dirname, 'pages/cuisine/PageCuisine.vue'),
-          props: true
+          path: "/cuisine/:cuisine_url",
+          name: "cuisine-url",
+          component: resolve(__dirname, "pages/cuisine/PageCuisine.vue"),
+          props: true,
         },
         {
           path: "/articles",
           name: "Articles",
-          component: resolve(__dirname, 'pages/category/Articles.vue'),
+          component: resolve(__dirname, "pages/category/Articles.vue"),
         },
         {
-          path: '/articles/:articles_url',
-          name: 'articles-url',
-          component: resolve(__dirname, 'pages/article/PageArticles.vue'),
-          props: true
+          path: "/articles/:articles_url",
+          name: "articles-url",
+          component: resolve(__dirname, "pages/article/PageArticles.vue"),
+          props: true,
         },
         {
           path: "/siddour",
           name: "Siddour",
-          component: resolve(__dirname, 'pages/pages/Siddour.vue'),
+          component: resolve(__dirname, "pages/pages/Siddour.vue"),
           meta: {
-            entryId: 'VIao92utBqXEIf5BJ7v3'
-          }
+            entryId: "VIao92utBqXEIf5BJ7v3",
+          },
         },
         {
           path: "/print",
           name: "Printouts",
-          component: resolve(__dirname, 'pages/pages/Printouts.vue'),
+          component: resolve(__dirname, "pages/pages/Printouts.vue"),
           meta: {
-            entryId: 'xTDjpC1FBEF5NUxHgVAs'
-          }
+            entryId: "xTDjpC1FBEF5NUxHgVAs",
+          },
         },
         {
           path: "/contact",
           name: "Contact",
-          component: resolve(__dirname, 'pages/pages/Contact.vue'),
+          component: resolve(__dirname, "pages/pages/Contact.vue"),
           meta: {
-            entryId: 'gEyCCPwRxH7Me3OrQG4S'
-          }
+            entryId: "gEyCCPwRxH7Me3OrQG4S",
+          },
         },
         {
           path: "/about",
           name: "About",
-          component: resolve(__dirname, 'pages/pages/About.vue'),
+          component: resolve(__dirname, "pages/pages/About.vue"),
           meta: {
-            entryId: 'EJPLGthI0WMQ0tlrqPsA'
-          }
+            entryId: "EJPLGthI0WMQ0tlrqPsA",
+          },
         },
         {
           path: "/donate",
           name: "Donate",
-          component: resolve(__dirname, 'pages/pages/Donate.vue'),
+          component: resolve(__dirname, "pages/pages/Donate.vue"),
           meta: {
-            entryId: 'Wq67TbsRbgWtNjkZdE6T'
-          }
+            entryId: "Wq67TbsRbgWtNjkZdE6T",
+          },
         },
         {
           path: "/rabbanim",
           name: "Rabbanim",
-          component: resolve(__dirname, 'pages/pages/Rabbanim.vue'),
+          component: resolve(__dirname, "pages/pages/Rabbanim.vue"),
           meta: {
-            entryId: 'l2daIjO7N1UNOfyh04KN'
-          }
+            entryId: "l2daIjO7N1UNOfyh04KN",
+          },
         },
         {
           path: "/english",
           name: "English",
-          component: resolve(__dirname, 'pages/pages/English.vue'),
+          component: resolve(__dirname, "pages/pages/English.vue"),
           meta: {
-            entryId: 'JCRJHKAJiBAu49wYynl0'
-          }
+            entryId: "JCRJHKAJiBAu49wYynl0",
+          },
         },
         {
-          path: '/404-not-found',
-          name: 'not-found',
-          component: resolve(__dirname, 'pages/notFound.vue'),
+          path: "/404-not-found",
+          name: "not-found",
+          component: resolve(__dirname, "pages/notFound.vue"),
         },
         {
-          path: '*',
-          redirect: '/404-not-found',
+          path: "*",
+          redirect: "/404-not-found",
         }
-      )
-    }
-  }
-}
+      );
+    },
+  },
+};
