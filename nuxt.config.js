@@ -37,9 +37,7 @@ export default {
         hid: "og:image",
         name: "og:image",
         // content: '/cm-og-default.jpg',
-        content: `${
-          process.env.NUXT_BASE_URL || "https://constantine-minhagim.com"
-        }/cm-og-default.jpg`,
+        content: "https://constantine-minhagim.com/cm-og-default.jpg",
       },
     ],
     link: [{ rel: "icon", type: "image/png", href: "/favicon.png" }],
